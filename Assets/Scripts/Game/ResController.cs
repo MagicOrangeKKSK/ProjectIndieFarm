@@ -6,6 +6,7 @@ namespace ProjectindieFarm
 	public partial class ResController : ViewController,ISingleton
 	{
 		public GameObject SeedPrefab;
+		public GameObject WaterPrefab;
 
 		public static ResController Instance => MonoSingletonProperty<ResController>.Instance;
 

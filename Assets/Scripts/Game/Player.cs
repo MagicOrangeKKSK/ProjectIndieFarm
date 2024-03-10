@@ -1,6 +1,7 @@
 using UnityEngine;
 using QFramework;
 using UnityEngine.Tilemaps;
+using HutongGames.PlayMaker.Actions;
 
 namespace ProjectindieFarm
 {
@@ -11,10 +12,11 @@ namespace ProjectindieFarm
 
 		void Start()
 		{
-			// Code Here
+			Debug.Log("11");
 		}
 
-		private void Update()
+
+        private void Update()
 		{
 			var cellPosition = Grid.WorldToCell(transform.position);
 			var grid = FindObjectOfType<GridController>().ShowGrid;
@@ -68,6 +70,24 @@ namespace ProjectindieFarm
 					}
 				}
 			}
-		}
-	}
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
+                {
+                   if (grid[cellPosition.x, cellPosition.y] != null && grid[cellPosition.x,cellPosition.y].Watered != true)
+                    {
+                        grid[cellPosition.x, cellPosition.y].Watered = true;
+                        //·ÅÖÖ×Ó
+                        ResController.Instance.WaterPrefab
+                            .Instantiate()
+                            .Position(tileWorldPos);
+						grid[cellPosition.x, cellPosition.y].Watered = true;
+                    }
+
+                }
+            }
+
+        }
+    }
 }
