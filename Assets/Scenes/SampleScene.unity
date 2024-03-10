@@ -1086,6 +1086,10 @@ MonoBehaviour:
   WaterPrefab: {fileID: 3453848049489106240, guid: a606a30a4a0be6f4abf8211c9899216d, type: 3}
   SmallPlantPrefab: {fileID: 7933248704495709084, guid: 7b7fdc8903c912748a4ef4ca5ec6978a, type: 3}
   RipePrefab: {fileID: 4709442940488482353, guid: 27086713a65979d4b8f5196cd9d22eac, type: 3}
+  PlantPrefab: {fileID: 7933248704495709084, guid: e4a0689857f853e45bd96e6bb85d42a4, type: 3}
+  SeedSprite: {fileID: -7866928900747384746, guid: e30fffb0548129c4ea4c4950cba6aa1c, type: 3}
+  SmallPlantSprite: {fileID: -8902951029311973782, guid: f0eb81cb98a9c0444b5aed3f5f549d11, type: 3}
+  RipeSprite: {fileID: 853675080466277832, guid: f6b7d2ae1205a0344b748b054ffc2e25, type: 3}
 --- !u!4 &1102160897
 Transform:
   m_ObjectHideFlags: 0
@@ -1100,6 +1104,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1556159329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1556159331}
+  - component: {fileID: 1556159330}
+  m_Layer: 0
+  m_Name: PlantController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1556159330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556159329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28e9dcafe685d248abe99c0e4c32a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Namespace: ProjectindieFarm
+  ScriptName: PlantController
+  ScriptsFolder: Assets/Scripts/Game
+  GeneratePrefab: 0
+  PrefabFolder: Assets/Art/Prefab
+  ArchitectureFullTypeName: 
+--- !u!4 &1556159331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556159329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2858722, y: 0.68952954, z: 0.0920939}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1589069105
 GameObject:

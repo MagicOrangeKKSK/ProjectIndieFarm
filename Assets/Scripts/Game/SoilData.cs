@@ -11,5 +11,7 @@ namespace ProjectindieFarm
         public bool HasPlant { get; set; } = false;
         public bool Watered { get; set; } = false;
 
+        public PlantStates PlantStates { get; set; } = PlantStates.Seed;
+
     }
 }

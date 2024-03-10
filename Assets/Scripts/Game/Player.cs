@@ -16,46 +16,37 @@ namespace ProjectindieFarm
 		{
 			Global.Days.Register((day) =>
 			{
-                var soilDatas = FindObjectOfType<GridController>().ShowGrid;
+				var soilDatas = FindObjectOfType<GridController>().ShowGrid;
 
-                var smallPlants = SceneManager.GetActiveScene()
-				.GetRootGameObjects()
-				.Where(gameObject => gameObject.name.StartsWith("SmallPlant"));
-                foreach (var smallPlant in smallPlants)
-                {
-                    var tilePos = Grid.WorldToCell(smallPlant.transform.position);
-                    var tileData = soilDatas[tilePos.x, tilePos.y];
-                    if (tileData != null && tileData.Watered)
-                    {
-                        ResController.Instance.RipePrefab.Instantiate().Position(smallPlant.transform.position);
-                        smallPlant.DestroySelf();
- 
-                    }
-                }
-
-
-                var seeds = SceneManager.GetActiveScene()
-			   .GetRootGameObjects()
-			   .Where(gameObj => gameObj.name.StartsWith("Seed"));
-
-				foreach (var seed in seeds)
+				PlantController.Instance.Plants.ForEach((x, y, plant) =>
 				{
-					var tilePos = Grid.WorldToCell(seed.transform.position);
-					var tileData = soilDatas[tilePos.x, tilePos.y];
-					if (tileData != null && tileData.Watered)
+					if (plant)
 					{
-						ResController.Instance.SmallPlantPrefab.Instantiate().Position(seed.transform.position);
-						seed.DestroySelf();
+
+						if (plant.State == PlantStates.Seed)
+						{
+							if (soilDatas[x, y].Watered)
+							{
+								plant.SetState(PlantStates.Small);
+							}
+						}
+						else if (plant.State == PlantStates.Small)
+						{
+							if (soilDatas[x, y].Watered)
+							{
+								plant.SetState(PlantStates.Ripe);
+							}
+						}
 					}
-				}
+				});
 
 				soilDatas.ForEach(soilData =>
 				{
-					if (soilData != null) 
+					if (soilData != null)
 					{
-					soilData.Watered = false;
-                    }
-                });
+						soilData.Watered = false;
+					}
+				});
 				SceneManager.GetActiveScene()
 			.GetRootGameObjects()
 			.Where(gameObj => gameObj.name.StartsWith("Water"))
@@ -107,11 +98,18 @@ namespace ProjectindieFarm
 					}
 					else if (grid[cellPosition.x, cellPosition.y].HasPlant != true)
 					{
-						grid[cellPosition.x, cellPosition.y].HasPlant = true;
-						//·ÅÖÖ×Ó
-						ResController.Instance.SeedPrefab
+
+					var plantGameObject=	ResController.Instance.PlantPrefab
 							.Instantiate()
 							.Position(tileWorldPos);
+
+					 var plant =	plantGameObject.GetComponent<Plant>();
+						plant.XCell = cellPosition.x;
+						plant.YCell = cellPosition.y;
+						PlantController.Instance.Plants[cellPosition.x, cellPosition.y] = plant;
+
+						grid[cellPosition.x, cellPosition.y].HasPlant = true;
+						
 					}
 					else
 					{
