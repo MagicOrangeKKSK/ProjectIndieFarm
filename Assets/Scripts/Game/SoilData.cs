@@ -10,5 +10,6 @@ namespace ProjectindieFarm
     {
         public bool HasPlant { get; set; } = false;
         public bool Watered { get; set; } = false;
+
     }
 }

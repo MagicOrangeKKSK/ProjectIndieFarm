@@ -16,13 +16,32 @@ namespace ProjectindieFarm
 		{
 			Global.Days.Register((day) =>
 			{
-				 var seeds =SceneManager.GetActiveScene()
+                var soilDatas = FindObjectOfType<GridController>().ShowGrid;
+
+                var smallPlants = SceneManager.GetActiveScene()
 				.GetRootGameObjects()
-				.Where(gameObj => gameObj.name.StartsWith("Seed"));
+				.Where(gameObject => gameObject.name.StartsWith("SmallPlant"));
+                foreach (var smallPlant in smallPlants)
+                {
+                    var tilePos = Grid.WorldToCell(smallPlant.transform.position);
+                    var tileData = soilDatas[tilePos.x, tilePos.y];
+                    if (tileData != null && tileData.Watered)
+                    {
+                        ResController.Instance.RipePrefab.Instantiate().Position(smallPlant.transform.position);
+                        smallPlant.DestroySelf();
+ 
+                    }
+                }
+
+
+                var seeds = SceneManager.GetActiveScene()
+			   .GetRootGameObjects()
+			   .Where(gameObj => gameObj.name.StartsWith("Seed"));
+
 				foreach (var seed in seeds)
 				{
 					var tilePos = Grid.WorldToCell(seed.transform.position);
-					var tileData = FindObjectOfType<GridController>().ShowGrid[tilePos.x, tilePos.y];
+					var tileData = soilDatas[tilePos.x, tilePos.y];
 					if (tileData != null && tileData.Watered)
 					{
 						ResController.Instance.SmallPlantPrefab.Instantiate().Position(seed.transform.position);
@@ -30,6 +49,17 @@ namespace ProjectindieFarm
 					}
 				}
 
+				soilDatas.ForEach(soilData =>
+				{
+					if (soilData != null) 
+					{
+					soilData.Watered = false;
+                    }
+                });
+				SceneManager.GetActiveScene()
+			.GetRootGameObjects()
+			.Where(gameObj => gameObj.name.StartsWith("Water"))
+			.ForEach(water => water.DestroySelf());
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 		}
 
