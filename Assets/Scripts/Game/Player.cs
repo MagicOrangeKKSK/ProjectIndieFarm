@@ -14,16 +14,26 @@ namespace ProjectindieFarm
 			// Code Here
 		}
 
-	   private void Update()
+		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.J))
+			if (Input.GetMouseButtonDown(0))
 			{
 				var cellPosition = Grid.WorldToCell(transform.position);
-				Tilemap.SetTile(cellPosition, null); 
-				
+				//Tilemap.SetTile(cellPosition, null);
+
+				var grid = FindObjectOfType<GridController>().ShowGrid;
+				if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
+				{
+					if (grid[cellPosition.x, cellPosition.y] == null)
+					{
+						Tilemap.SetTile(cellPosition, FindObjectOfType<GridController>().Pen);
+						grid[cellPosition.x, cellPosition.y] = new SoilData();
+					}
+				}
+
 				//x,y 值
-				 //拿tilemap具体块
-				 //拿到具体块
+				//拿tilemap具体块
+				//拿到具体块
 			}
 
 		}
