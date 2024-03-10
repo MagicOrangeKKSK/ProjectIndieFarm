@@ -16,12 +16,23 @@ namespace ProjectindieFarm
 
 		private void Update()
 		{
+			var cellPosition = Grid.WorldToCell(transform.position);
+			var grid = FindObjectOfType<GridController>().ShowGrid;
+			var tileWorldPos = Grid.CellToWorld(cellPosition);
+			tileWorldPos.x += Grid.cellSize.x * 0.5f;
+			tileWorldPos.y += Grid.cellSize.y * 0.5f;
+			if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
+			{
+				TileSelectController.Instance.Position(tileWorldPos);
+				TileSelectController.Instance.Show();
+			}
+			else
+			{
+				TileSelectController.Instance.Hide();
+			}
+
 			if (Input.GetMouseButtonDown(0))
 			{
-				var cellPosition = Grid.WorldToCell(transform.position);
-				//Tilemap.SetTile(cellPosition, null);
-
-				var grid = FindObjectOfType<GridController>().ShowGrid;
 				if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
 				{
 					if (grid[cellPosition.x, cellPosition.y] == null)
@@ -30,13 +41,9 @@ namespace ProjectindieFarm
 						Tilemap.SetTile(cellPosition, FindObjectOfType<GridController>().Pen);
 						grid[cellPosition.x, cellPosition.y] = new SoilData();
 					}
-					else if (grid[cellPosition.x,cellPosition.y].HasPlant != true)
+					else if (grid[cellPosition.x, cellPosition.y].HasPlant != true)
 					{
-					  var tileWorldPos =	Grid.CellToWorld(cellPosition);
-						tileWorldPos.x += Grid.cellSize.x * 0.5f;
-						tileWorldPos.y += Grid.cellSize.y * 0.5f;
-
-                        grid[cellPosition.x, cellPosition.y].HasPlant = true;
+						grid[cellPosition.x, cellPosition.y].HasPlant = true;
 						//·ÅÖÖ×Ó
 						ResController.Instance.SeedPrefab
 							.Instantiate()
@@ -44,20 +51,14 @@ namespace ProjectindieFarm
 					}
 					else
 					{
-
 					}
 				}
-
-
 			}
 
 
 			if (Input.GetMouseButtonDown(1))
 			{
-				var cellPosition = Grid.WorldToCell(transform.position);
-				//Tilemap.SetTile(cellPosition, null);
 
-				var grid = FindObjectOfType<GridController>().ShowGrid;
 				if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
 				{
 					if (grid[cellPosition.x, cellPosition.y] != null)
