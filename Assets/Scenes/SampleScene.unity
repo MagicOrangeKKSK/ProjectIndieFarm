@@ -1083,7 +1083,7 @@ MonoBehaviour:
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
   SeedPrefab: {fileID: 6221509891773524769, guid: f5ff7b4426108c6498c9c82e4772c10e, type: 3}
-  WaterPrefab: {fileID: 0}
+  WaterPrefab: {fileID: 3453848049489106240, guid: a606a30a4a0be6f4abf8211c9899216d, type: 3}
 --- !u!4 &1102160897
 Transform:
   m_ObjectHideFlags: 0

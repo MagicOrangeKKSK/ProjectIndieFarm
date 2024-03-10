@@ -2,6 +2,8 @@ using UnityEngine;
 using QFramework;
 using UnityEngine.Tilemaps;
 using HutongGames.PlayMaker.Actions;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 namespace ProjectindieFarm
 {
@@ -12,12 +14,42 @@ namespace ProjectindieFarm
 
 		void Start()
 		{
-			Debug.Log("11");
+			Global.Days.Register((day) =>
+			{
+				 var seeds =SceneManager.GetActiveScene()
+				.GetRootGameObjects()
+				.Where(gameObj => gameObj.name.StartsWith("Seed"));
+				foreach (var seed in seeds)
+				{
+					var tilePos = Grid.WorldToCell(seed.transform.position);
+					var tileData = FindObjectOfType<GridController>().ShowGrid[tilePos.x, tilePos.y];
+					if (tileData != null && tileData.Watered)
+					{
+						ResController.Instance.SmallPlantPrefab.Instantiate().Position(seed.transform.position);
+						seed.DestroySelf();
+					}
+				}
+
+			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 		}
 
+        public void OnGUI()
+        {
+			IMGUIHelper.SetDesignResolution(640, 360);
+			GUILayout.Space(10);
+			GUILayout.BeginHorizontal();
+			GUILayout.Space(10);
+			GUILayout.Label("ÌìÊý:" + Global.Days.Value);
+			GUILayout.EndHorizontal();
+        }
 
         private void Update()
 		{
+			if (Input.GetKeyDown(KeyCode.F))
+			{
+				Global.Days.Value++;
+			}
+
 			var cellPosition = Grid.WorldToCell(transform.position);
 			var grid = FindObjectOfType<GridController>().ShowGrid;
 			var tileWorldPos = Grid.CellToWorld(cellPosition);
