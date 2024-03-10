@@ -62,6 +62,11 @@ namespace ProjectindieFarm
 			GUILayout.Space(10);
 			GUILayout.Label("天数:" + Global.Days.Value);
 			GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(10);
+            GUILayout.Label("果子:" + Global.FruitCount.Value);
+            GUILayout.EndHorizontal();
         }
 
         private void Update()
@@ -111,8 +116,13 @@ namespace ProjectindieFarm
 						grid[cellPosition.x, cellPosition.y].HasPlant = true;
 						
 					}
-					else
-					{
+                    else if (grid[cellPosition.x, cellPosition.y].HasPlant == true)
+                    {
+						if (grid[cellPosition.x,cellPosition.y].PlantStates == PlantStates.Ripe)
+						{
+							PlantController.Instance.Plants[cellPosition.x,cellPosition.y].SetState(PlantStates.Old);
+							Global.FruitCount.Value++;
+						}
 					}
 				}
 			}

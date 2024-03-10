@@ -1090,6 +1090,7 @@ MonoBehaviour:
   SeedSprite: {fileID: -7866928900747384746, guid: e30fffb0548129c4ea4c4950cba6aa1c, type: 3}
   SmallPlantSprite: {fileID: -8902951029311973782, guid: f0eb81cb98a9c0444b5aed3f5f549d11, type: 3}
   RipeSprite: {fileID: 853675080466277832, guid: f6b7d2ae1205a0344b748b054ffc2e25, type: 3}
+  OldSprite: {fileID: -6728447469715521605, guid: 4911a77920b02ac408711adff9ab67d4, type: 3}
 --- !u!4 &1102160897
 Transform:
   m_ObjectHideFlags: 0

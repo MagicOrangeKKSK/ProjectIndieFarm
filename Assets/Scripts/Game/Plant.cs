@@ -29,9 +29,13 @@ namespace ProjectindieFarm
 				{
 					GetComponent<SpriteRenderer>().sprite = ResController.Instance.SeedSprite;
 				}
+				else if(newState == PlantStates.Old)
+				{
+                    GetComponent<SpriteRenderer>().sprite = ResController.Instance.OldSprite;
+                }
 
-				//同步数据
-				FindObjectOfType<GridController>().ShowGrid[XCell, YCell].PlantStates = newState;
+                //同步数据
+                FindObjectOfType<GridController>().ShowGrid[XCell, YCell].PlantStates = newState;
 			}
 		}
 	

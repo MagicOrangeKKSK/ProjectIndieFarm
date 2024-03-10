@@ -15,6 +15,7 @@ namespace ProjectindieFarm
 		public Sprite SeedSprite;
 		public Sprite SmallPlantSprite;
 		public Sprite RipeSprite;
+		public Sprite OldSprite;
 
 
 		public static ResController Instance => MonoSingletonProperty<ResController>.Instance;
