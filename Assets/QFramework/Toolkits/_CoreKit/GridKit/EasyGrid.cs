@@ -175,6 +175,18 @@ namespace QFramework.Example
             }
         }
 
+        public T this[Vector3Int index]
+        {
+            get
+            {
+                return this[index.x,index.y];
+            }
+            set
+            {
+                this[index.x,index.y] = value;
+            }
+        }
+
         public T this[int xIndex, int yIndex]
         {
             get
