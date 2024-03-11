@@ -66,11 +66,11 @@ namespace ProjectindieFarm
             GUILayout.Label("浇水:E" );
             GUILayout.Label("鼠标左键:摘果");
             GUILayout.Label("鼠标右键:移除");
-            GUILayout.Label($"当前工具：{Global.CurrentToolName.Value}");
+            GUILayout.Label($"当前工具：{Constant.DisplayName(Global.CurrentTool.Value)}");
 			GUILayout.EndVertical();
             GUILayout.EndHorizontal();
 			GUILayout.FlexibleSpace();
-            GUI.Label(new Rect(10,360-20,200,24), $"[1] 手  [2]锄头");
+            GUI.Label(new Rect(10,360-20,200,24), $"[1]手  [2]锄头 [3]种子");
 
 
         }
@@ -101,14 +101,15 @@ namespace ProjectindieFarm
 			{
 				if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
 				{
-					if (grid[cellPosition.x, cellPosition.y] == null && Global.CurrentToolName.Value == "锄头")
+					if (grid[cellPosition.x, cellPosition.y] == null && Global.CurrentTool.Value == Constant.TOOL_SHOVEL)
 					{
 						//耕地
 						Tilemap.SetTile(cellPosition, FindObjectOfType<GridController>().Pen);
 						grid[cellPosition] = new SoilData();
 					}
-					return;
-					 if (grid[cellPosition].HasPlant != true)
+					else if (grid[cellPosition] != null && 
+						grid[cellPosition].HasPlant != true && 
+						Global.CurrentTool.Value == Constant.TOOL_SEED)
 					{
 
 					var plantGameObject=	ResController.Instance.PlantPrefab
@@ -123,7 +124,8 @@ namespace ProjectindieFarm
 						grid[cellPosition].HasPlant = true;
 						
 					}
-                    else if (grid[cellPosition].HasPlant == true)
+					return;
+                     if (grid[cellPosition].HasPlant == true)
                     {
 						if (grid[cellPosition].PlantStates == PlantStates.Ripe)
 						{
@@ -173,13 +175,18 @@ namespace ProjectindieFarm
 
 			if(Input.GetKeyDown(KeyCode.Alpha1))
 			{
-				Global.CurrentToolName.Value = "手";
+				Global.CurrentTool.Value = Constant.TOOL_HAND;
 			}
 
 			if(Input.GetKeyDown(KeyCode.Alpha2))
 			{
-				Global.CurrentToolName.Value = "锄头";
-			}
+				Global.CurrentTool.Value = Constant.TOOL_SHOVEL;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Global.CurrentTool.Value = Constant.TOOL_SEED;
+            }
         }
     }
 }
