@@ -57,35 +57,22 @@ namespace ProjectindieFarm
         public void OnGUI()
         {
 			IMGUIHelper.SetDesignResolution(640, 360);
-			GUILayout.Space(10);
-			GUILayout.BeginHorizontal();
-			GUILayout.Space(10);
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(10);
+			GUILayout.BeginVertical();
 			GUILayout.Label("天数:" + Global.Days.Value);
-			GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(10);
             GUILayout.Label("果子:" + Global.FruitCount.Value);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(10);
-            GUILayout.Label("浇水:E" );
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(10);
             GUILayout.Label("下一天:F");
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(10);
+            GUILayout.Label("浇水:E" );
             GUILayout.Label("鼠标左键:摘果");
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Space(10);
             GUILayout.Label("鼠标右键:移除");
+            GUILayout.Label($"当前工具：{Global.CurrentToolName.Value}");
+			GUILayout.EndVertical();
             GUILayout.EndHorizontal();
+			GUILayout.FlexibleSpace();
+            GUI.Label(new Rect(10,360-20,200,24), $"[1] 手  [2]锄头");
+
+
         }
 
         private void Update()
@@ -114,13 +101,14 @@ namespace ProjectindieFarm
 			{
 				if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
 				{
-					if (grid[cellPosition.x, cellPosition.y] == null)
+					if (grid[cellPosition.x, cellPosition.y] == null && Global.CurrentToolName.Value == "锄头")
 					{
 						//耕地
 						Tilemap.SetTile(cellPosition, FindObjectOfType<GridController>().Pen);
 						grid[cellPosition] = new SoilData();
 					}
-					else if (grid[cellPosition].HasPlant != true)
+					return;
+					 if (grid[cellPosition].HasPlant != true)
 					{
 
 					var plantGameObject=	ResController.Instance.PlantPrefab
@@ -183,6 +171,15 @@ namespace ProjectindieFarm
 				SceneManager.LoadScene("GamePass");
 			}
 
+			if(Input.GetKeyDown(KeyCode.Alpha1))
+			{
+				Global.CurrentToolName.Value = "手";
+			}
+
+			if(Input.GetKeyDown(KeyCode.Alpha2))
+			{
+				Global.CurrentToolName.Value = "锄头";
+			}
         }
     }
 }
