@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 using HutongGames.PlayMaker.Actions;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using Unity.Burst.CompilerServices;
 
 namespace ProjectindieFarm
 {
@@ -70,7 +71,7 @@ namespace ProjectindieFarm
 			GUILayout.EndVertical();
             GUILayout.EndHorizontal();
 			GUILayout.FlexibleSpace();
-            GUI.Label(new Rect(10,360-20,200,24), $"[1]手  [2]锄头 [3]种子");
+            GUI.Label(new Rect(10,360-20,200,24), $"[1]手  [2]锄头 [3]种子 [4]水壶");
 
 
         }
@@ -89,9 +90,39 @@ namespace ProjectindieFarm
 			tileWorldPos.y += Grid.cellSize.y * 0.5f;
 			if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
 			{
-				TileSelectController.Instance.Position(tileWorldPos);
-				TileSelectController.Instance.Show();
-			}
+				if (Global.CurrentTool.Value == Constant.TOOL_SHOVEL &&
+					grid[cellPosition.x, cellPosition.y] == null)
+				{
+					TileSelectController.Instance.Position(tileWorldPos);
+					TileSelectController.Instance.Show();
+				}
+				else if (grid[cellPosition] != null &&
+					grid[cellPosition].HasPlant != true &&
+					Global.CurrentTool.Value == Constant.TOOL_SEED)
+				{
+					TileSelectController.Instance.Position(tileWorldPos);
+					TileSelectController.Instance.Show();
+				}
+				else if (grid[cellPosition] != null &&
+				grid[cellPosition].Watered != true &&
+				Global.CurrentTool.Value == Constant.TOOL_WATERING_SCAN)
+				{
+					TileSelectController.Instance.Position(tileWorldPos);
+					TileSelectController.Instance.Show();
+				}
+				else if (grid[cellPosition] != null &&
+					grid[cellPosition].HasPlant == true &&
+					grid[cellPosition].PlantStates == PlantStates.Ripe &&
+					Global.CurrentTool.Value == Constant.TOOL_HAND) 
+				{
+                    TileSelectController.Instance.Position(tileWorldPos);
+                    TileSelectController.Instance.Show();
+                }
+				else
+				{
+					TileSelectController.Instance.Hide();
+				}
+            }
 			else
 			{
 				TileSelectController.Instance.Hide();
@@ -107,33 +138,42 @@ namespace ProjectindieFarm
 						Tilemap.SetTile(cellPosition, FindObjectOfType<GridController>().Pen);
 						grid[cellPosition] = new SoilData();
 					}
-					else if (grid[cellPosition] != null && 
-						grid[cellPosition].HasPlant != true && 
+					else if (grid[cellPosition] != null &&
+						grid[cellPosition].HasPlant != true &&
 						Global.CurrentTool.Value == Constant.TOOL_SEED)
 					{
 
-					var plantGameObject=	ResController.Instance.PlantPrefab
-							.Instantiate()
-							.Position(tileWorldPos);
+						var plantGameObject = ResController.Instance.PlantPrefab
+								.Instantiate()
+								.Position(tileWorldPos);
 
-					 var plant =	plantGameObject.GetComponent<Plant>();
+						var plant = plantGameObject.GetComponent<Plant>();
 						plant.XCell = cellPosition.x;
 						plant.YCell = cellPosition.y;
 						PlantController.Instance.Plants[cellPosition] = plant;
 
 						grid[cellPosition].HasPlant = true;
-						
+
 					}
-					return;
-                     if (grid[cellPosition].HasPlant == true)
-                    {
-						if (grid[cellPosition].PlantStates == PlantStates.Ripe)
-						{
-							Destroy(PlantController.Instance.Plants[cellPosition].gameObject);//.SetState(PlantStates.Old);
-							grid[cellPosition].HasPlant = false;
-							Global.FruitCount.Value++;
-						}
+					else if (grid[cellPosition] != null &&
+					   grid[cellPosition].Watered != true &&
+					   Global.CurrentTool.Value == Constant.TOOL_WATERING_SCAN)
+					{
+						grid[cellPosition].Watered = true;
+						ResController.Instance.WaterPrefab
+							.Instantiate()
+							.Position(tileWorldPos);
+						grid[cellPosition].Watered = true;
 					}
+				}
+				else if (grid[cellPosition] != null &&  
+					grid[cellPosition].HasPlant == true && 
+					grid[cellPosition].PlantStates == PlantStates.Ripe &&
+					Global.CurrentTool.Value == Constant.TOOL_HAND)
+				{
+						Destroy(PlantController.Instance.Plants[cellPosition].gameObject);//.SetState(PlantStates.Old);
+						grid[cellPosition].HasPlant = false;
+						Global.FruitCount.Value++;
 				}
 			}
 
@@ -153,19 +193,7 @@ namespace ProjectindieFarm
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)
-                {
-                   if (grid[cellPosition] != null && grid[cellPosition].Watered != true)
-                    {
-                        grid[cellPosition].Watered = true;
-                        //放种子
-                        ResController.Instance.WaterPrefab
-                            .Instantiate()
-                            .Position(tileWorldPos);
-						grid[cellPosition].Watered = true;
-                    }
-
-                }
+           
             }
 
 			if (Input.GetKeyDown(KeyCode.Return))
@@ -186,6 +214,11 @@ namespace ProjectindieFarm
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 Global.CurrentTool.Value = Constant.TOOL_SEED;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                Global.CurrentTool.Value = Constant.TOOL_WATERING_SCAN;
             }
         }
     }
