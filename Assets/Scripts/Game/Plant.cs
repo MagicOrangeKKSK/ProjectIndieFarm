@@ -10,11 +10,18 @@ namespace ProjectindieFarm
 
 		private PlantStates mState = PlantStates.Seed;
 		public PlantStates State => mState;
+
+		public int RipeDay = -1;
 	
 		public void SetState(PlantStates newState)
 		{
 			if(newState != mState)
 			{
+				if(mState == PlantStates.Small && newState == PlantStates.Ripe)
+				{
+					RipeDay = Global.Days.Value;
+				}
+
 				mState = newState;
 				//«–ªª±Ìœ÷
 				if(newState == PlantStates.Small)

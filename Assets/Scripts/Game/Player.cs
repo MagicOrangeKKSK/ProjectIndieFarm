@@ -17,6 +17,9 @@ namespace ProjectindieFarm
 		{
 			Global.Days.Register((day) =>
 			{
+		 
+				Global.RipeAndHarvesCountInCurrentDay = 0;
+
 				var soilDatas = FindObjectOfType<GridController>().ShowGrid;
 
 				PlantController.Instance.Plants.ForEach((x, y, plant) =>
@@ -52,6 +55,7 @@ namespace ProjectindieFarm
 			.GetRootGameObjects()
 			.Where(gameObj => gameObj.name.StartsWith("Water"))
 			.ForEach(water => water.DestroySelf());
+
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 		}
 
@@ -63,6 +67,7 @@ namespace ProjectindieFarm
 			GUILayout.BeginVertical();
 			GUILayout.Label("天数:" + Global.Days.Value);
             GUILayout.Label("果子:" + Global.FruitCount.Value);
+            GUILayout.Label("收割的果子:" + Global.RipeAndHarvesCountInCurrentDay);
             GUILayout.Label("下一天:F");
             GUILayout.Label("浇水:E" );
             GUILayout.Label("鼠标左键:摘果");
@@ -165,20 +170,33 @@ namespace ProjectindieFarm
 							.Position(tileWorldPos);
 						grid[cellPosition].Watered = true;
 					}
-				}
-				else if (grid[cellPosition] != null &&  
-					grid[cellPosition].HasPlant == true && 
-					grid[cellPosition].PlantStates == PlantStates.Ripe &&
-					Global.CurrentTool.Value == Constant.TOOL_HAND)
-				{
+					else if (grid[cellPosition] != null &&
+						grid[cellPosition].HasPlant == true &&
+						grid[cellPosition].PlantStates == PlantStates.Ripe &&
+						Global.CurrentTool.Value == Constant.TOOL_HAND)
+					{
+						if (PlantController.Instance.Plants[cellPosition].RipeDay == Global.Days.Value)
+						{
+							Global.RipeAndHarvesCountInCurrentDay++;
+							if (Global.RipeAndHarvesCountInCurrentDay >= 2)
+							{
+								ActionKit.Delay(1.0f, () =>
+								{
+									SceneManager.LoadScene("GamePass");
+								}).Start(this);
+							}
+						}
+
 						Destroy(PlantController.Instance.Plants[cellPosition].gameObject);//.SetState(PlantStates.Old);
 						grid[cellPosition].HasPlant = false;
 						Global.FruitCount.Value++;
+					}
+
 				}
 			}
 
 
-			if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
 			{
 
 				if (cellPosition.x < 10 && cellPosition.x >= 0 && cellPosition.y < 10 && cellPosition.y >= 0)

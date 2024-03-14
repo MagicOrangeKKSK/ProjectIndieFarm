@@ -21,6 +21,11 @@ namespace ProjectindieFarm
         /// 当前的工具
         /// </summary>
         public static BindableProperty<string> CurrentTool = new BindableProperty<string>("手");
+
+        /// <summary>
+        /// 当天成熟的数量
+        /// </summary>
+        public static int RipeAndHarvesCountInCurrentDay = 0;
     }
 
     /// <summary>
