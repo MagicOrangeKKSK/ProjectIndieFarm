@@ -1,29 +1,30 @@
-using QFramework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 namespace ProjectindieFarm
 {
-    public class ChallengeRipeAndHarverstFiveFruitsInOneDay : Challenge
+    public class ChallengeHarvestAFruit : Challenge
     {
-        public override string Name => "同一天收获五个当天成熟的果实";
+        public override string Name => "收获第一颗果实";
 
         public override void OnStart()
         {
-        
+
         }
 
         public override bool CheckFinish()
         {
-            return Global.RipeAndHarvesCountInCurrentDay.Value >= 5;
+            return Global.Days .Value != StartDate &&
+                Global.HarvestCountInCurrentDay.Value > 0;
         }
 
         public override void OnFinish()
         {
-        
+
         }
- 
+
+   
+
+    
     }
 }

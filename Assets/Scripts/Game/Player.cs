@@ -19,6 +19,7 @@ namespace ProjectindieFarm
 			{
 		 
 				Global.RipeAndHarvesCountInCurrentDay.Value = 0;
+				Global.HarvestCountInCurrentDay.Value = 0;
 
 				var soilDatas = FindObjectOfType<GridController>().ShowGrid;
 
@@ -176,6 +177,7 @@ namespace ProjectindieFarm
 						Global.CurrentTool.Value == Constant.TOOL_HAND)
 					{
 						Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPosition]);
+						Global.HarvestCountInCurrentDay.Value++;
 
 						Destroy(PlantController.Instance.Plants[cellPosition].gameObject);//.SetState(PlantStates.Old);
 						grid[cellPosition].HasPlant = false;

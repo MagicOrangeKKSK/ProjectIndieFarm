@@ -27,12 +27,24 @@ namespace ProjectindieFarm
         /// </summary>
         public static BindableProperty<int> RipeAndHarvesCountInCurrentDay = new BindableProperty<int>(0);
 
+        public static BindableProperty<int> HarvestCountInCurrentDay = new BindableProperty<int>(0);
+
         public static List<Challenge> Challenges = new List<Challenge>()
         {
-            new ChallengeHarvestFirstFruit(),
-            new ChallengeRipeAndHarverstTwoFruitsInOneDay(),
-            new ChallengeRipeAndHarverstFiveFruitsInOneDay(),
+            new ChallengeHarvestAFruit(),
+            new ChallengeRipeAndHarverstTwoFruitsInADay(),
+            new ChallengeRipeAndHarverstFiveFruitsInADay(),
         };
+        public static List<Challenge> ActiveChallenges = new List<Challenge>()
+        {
+
+        };
+
+        public static List<Challenge> FinishedChallenges = new List<Challenge>()
+        {
+
+        };
+
 
         /// <summary>
         /// 当植物收割
@@ -43,6 +55,7 @@ namespace ProjectindieFarm
         /// 当挑战完成
         /// </summary>
         public static EasyEvent<Challenge> OnChalengeFinish = new EasyEvent<Challenge>();
+
     }
 
     /// <summary>
