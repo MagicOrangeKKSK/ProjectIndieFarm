@@ -15,7 +15,7 @@ namespace ProjectindieFarm
         }
         public States State = States.NotStart;
 
-        public string Name;
+        public abstract string Name { get; }
 
         public abstract void OnStart();
         public abstract bool CheckFinish();
