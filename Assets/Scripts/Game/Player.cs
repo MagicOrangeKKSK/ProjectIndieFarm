@@ -18,7 +18,7 @@ namespace ProjectindieFarm
 			Global.Days.Register((day) =>
 			{
 		 
-				Global.RipeAndHarvesCountInCurrentDay = 0;
+				Global.RipeAndHarvesCountInCurrentDay.Value = 0;
 
 				var soilDatas = FindObjectOfType<GridController>().ShowGrid;
 
@@ -175,17 +175,7 @@ namespace ProjectindieFarm
 						grid[cellPosition].PlantStates == PlantStates.Ripe &&
 						Global.CurrentTool.Value == Constant.TOOL_HAND)
 					{
-						if (PlantController.Instance.Plants[cellPosition].RipeDay == Global.Days.Value)
-						{
-							Global.RipeAndHarvesCountInCurrentDay++;
-							if (Global.RipeAndHarvesCountInCurrentDay >= 2)
-							{
-								ActionKit.Delay(1.0f, () =>
-								{
-									SceneManager.LoadScene("GamePass");
-								}).Start(this);
-							}
-						}
+						Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPosition]);
 
 						Destroy(PlantController.Instance.Plants[cellPosition].gameObject);//.SetState(PlantStates.Old);
 						grid[cellPosition].HasPlant = false;
