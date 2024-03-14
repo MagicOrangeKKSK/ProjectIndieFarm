@@ -6,19 +6,17 @@ using UnityEngine.SceneManagement;
 
 namespace ProjectindieFarm
 {
-    public class ChallengeRipeAndHarverstTwoFruitsInOneDay : Challenge
+    public class ChallengeRipeAndHarverstFiveFruitsInOneDay : Challenge
     {
-        public List<IUnRegister> UnregisterList => new List<IUnRegister>();
 
         public override void OnStart()
         {
-       
-
+        
         }
 
         public override bool CheckFinish()
         {
-            return Global.RipeAndHarvesCountInCurrentDay.Value >= 2;
+            return Global.RipeAndHarvesCountInCurrentDay.Value >= 5;
         }
 
         public override void OnFinish()

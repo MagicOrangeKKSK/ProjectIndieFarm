@@ -29,7 +29,9 @@ namespace ProjectindieFarm
 
         public static List<Challenge> Challenges = new List<Challenge>()
         {
-            new ChallengeRipeAndHarverstTwoFruitsInOneDay()
+            new ChallengeHarvestFirstFruit(),
+            new ChallengeRipeAndHarverstTwoFruitsInOneDay(),
+            new ChallengeRipeAndHarverstFiveFruitsInOneDay(),
         };
 
         /// <summary>

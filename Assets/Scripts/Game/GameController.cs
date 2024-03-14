@@ -9,13 +9,30 @@ namespace ProjectindieFarm
 	{
 		void Start()
 		{
-			Global.OnChalengeFinish.Register(challengs =>
+			Global.OnChalengeFinish.Register(challeng =>
 			{
-				Debug.Log("挑战完成");
+				Debug.Log("@@@"+challeng+"挑战完成");
+
+				if(Global.Challenges.All(challenge=> challenge.State == Challenge.States.Finished))
+				{
+					ActionKit.Delay(0.5f, () =>
+					{
+						SceneManager.LoadScene("GamePass");
+					}).Start(this);
+				}
+
 			}).UnRegisterWhenGameObjectDestroyed(this);
 
+            //监听成熟的植物是否当天成熟且当天收割的
+            Global.OnPlantharvest.Register(plant =>
+            {
+                if (plant.RipeDay == Global.Days.Value)
+                {
+                    Global.RipeAndHarvesCountInCurrentDay.Value++;
+                }
+            }).UnRegisterWhenGameObjectDestroyed(this);
 
-		}
+        }
 
 		private void Update()
 		{
