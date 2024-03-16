@@ -86,6 +86,7 @@ namespace ProjectindieFarm
 			if (Input.GetKeyDown(KeyCode.F))
 			{
 				Global.Days.Value++;
+				AudioController.Instance.SfxNextDay.Play();
 			}
 
 			var cellPosition = Grid.WorldToCell(transform.position);
@@ -100,7 +101,6 @@ namespace ProjectindieFarm
 				{
 					TileSelectController.Instance.Position(tileWorldPos);
 					TileSelectController.Instance.Show();
-					AudioController.Instance.SfxShoveDIg.Play();
 				}
 				else if (grid[cellPosition] != null &&
 					grid[cellPosition].HasPlant != true &&
@@ -143,8 +143,9 @@ namespace ProjectindieFarm
 						//ธ๛ตุ
 						Tilemap.SetTile(cellPosition, FindObjectOfType<GridController>().Pen);
 						grid[cellPosition] = new SoilData();
-					}
-					else if (grid[cellPosition] != null &&
+				    	AudioController.Instance.SfxShoveDig.Play();
+                    }
+                    else if (grid[cellPosition] != null &&
 						grid[cellPosition].HasPlant != true &&
 						Global.CurrentTool.Value == Constant.TOOL_SEED)
 					{
@@ -157,11 +158,12 @@ namespace ProjectindieFarm
 						plant.XCell = cellPosition.x;
 						plant.YCell = cellPosition.y;
 						PlantController.Instance.Plants[cellPosition] = plant;
+                        plant.SetState(PlantStates.Seed);
+                        grid[cellPosition].HasPlant = true;
+                        AudioController.Instance.SfxSeed.Play();
 
-						grid[cellPosition].HasPlant = true;
-
-					}
-					else if (grid[cellPosition] != null &&
+                    }
+                    else if (grid[cellPosition] != null &&
 					   grid[cellPosition].Watered != true &&
 					   Global.CurrentTool.Value == Constant.TOOL_WATERING_SCAN)
 					{
@@ -170,8 +172,9 @@ namespace ProjectindieFarm
 							.Instantiate()
 							.Position(tileWorldPos);
 						grid[cellPosition].Watered = true;
-					}
-					else if (grid[cellPosition] != null &&
+					AudioController.Instance.SfxWater.Play();
+                    }
+                    else if (grid[cellPosition] != null &&
 						grid[cellPosition].HasPlant == true &&
 						grid[cellPosition].PlantStates == PlantStates.Ripe &&
 						Global.CurrentTool.Value == Constant.TOOL_HAND)
@@ -181,7 +184,9 @@ namespace ProjectindieFarm
 
 						Destroy(PlantController.Instance.Plants[cellPosition].gameObject);//.SetState(PlantStates.Old);
 						grid[cellPosition].HasPlant = false;
+						PlantController.Instance.Plants[cellPosition].SetState(PlantStates.Old);
 						Global.FruitCount.Value++;
+                        AudioController.Instance.SfxHarvest.Play();
 					}
 
 				}

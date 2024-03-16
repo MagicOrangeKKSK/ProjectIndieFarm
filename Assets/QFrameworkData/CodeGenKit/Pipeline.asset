@@ -23,15 +23,33 @@ MonoBehaviour:
       PathToRoot: SfxTake
       MemberName: SfxTake
     - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxShoveDIg
-      MemberName: SfxShoveDIg
+      PathToRoot: SfxShoveDig
+      MemberName: SfxShoveDig
+    - TypeName: UnityEngine.AudioSource
+      PathToRoot: SfxSeed
+      MemberName: SfxSeed
+    - TypeName: UnityEngine.AudioSource
+      PathToRoot: SfxWater
+      MemberName: SfxWater
+    - TypeName: UnityEngine.AudioSource
+      PathToRoot: SfxHarvest
+      MemberName: SfxHarvest
+    - TypeName: UnityEngine.AudioSource
+      PathToRoot: SfxChallengeFinish
+      MemberName: SfxChallengeFinish
+    - TypeName: UnityEngine.AudioSource
+      PathToRoot: SfxNextDay
+      MemberName: SfxNextDay
     ScriptsFolder: Assets/Scripts/Game
     ClassName: AudioController
     Namespace: ProjectindieFarm
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ProjectindieFarm\r\n{\r\n\tpublic
       partial class AudioController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:0b931833-8570-46f1-9154-639b56a92aec\r\nusing UnityEngine;\r\n\r\nnamespace
+    DesignerCode: "// Generate Id:17fb0908-57a5-41f1-848a-f0c8afa953a1\r\nusing UnityEngine;\r\n\r\nnamespace
       ProjectindieFarm\r\n{\r\n\tpublic partial class AudioController\r\n\t{\r\n\r\n\t\tpublic
       UnityEngine.AudioSource SfxTake;\r\n\r\n\t\tpublic UnityEngine.AudioSource
-      SfxShoveDIg;\r\n\r\n\t}\r\n}\r\n"
+      SfxShoveDig;\r\n\r\n\t\tpublic UnityEngine.AudioSource SfxSeed;\r\n\r\n\t\tpublic
+      UnityEngine.AudioSource SfxWater;\r\n\r\n\t\tpublic UnityEngine.AudioSource
+      SfxHarvest;\r\n\r\n\t\tpublic UnityEngine.AudioSource SfxChallengeFinish;\r\n\r\n\t\tpublic
+      UnityEngine.AudioSource SfxNextDay;\r\n\r\n\t}\r\n}\r\n"

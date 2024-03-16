@@ -14,6 +14,7 @@ namespace ProjectindieFarm
 
 			Global.OnChalengeFinish.Register(challeng =>
 			{
+				AudioController.Instance.SfxChallengeFinish.Play();
 				//如果全部完成则游戏结束
 				if(Global.Challenges.All(challenge=> challenge.State == Challenge.States.Finished))
 				{

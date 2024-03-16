@@ -1,4 +1,4 @@
-// Generate Id:0b931833-8570-46f1-9154-639b56a92aec
+// Generate Id:17fb0908-57a5-41f1-848a-f0c8afa953a1
 using UnityEngine;
 
 namespace ProjectindieFarm
@@ -8,7 +8,17 @@ namespace ProjectindieFarm
 
 		public UnityEngine.AudioSource SfxTake;
 
-		public UnityEngine.AudioSource SfxShoveDIg;
+		public UnityEngine.AudioSource SfxShoveDig;
+
+		public UnityEngine.AudioSource SfxSeed;
+
+		public UnityEngine.AudioSource SfxWater;
+
+		public UnityEngine.AudioSource SfxHarvest;
+
+		public UnityEngine.AudioSource SfxChallengeFinish;
+
+		public UnityEngine.AudioSource SfxNextDay;
 
 	}
 }
