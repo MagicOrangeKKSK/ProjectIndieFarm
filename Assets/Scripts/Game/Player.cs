@@ -70,7 +70,6 @@ namespace ProjectindieFarm
             GUILayout.Label("果子:" + Global.FruitCount.Value);
             GUILayout.Label("收割的果子:" + Global.RipeAndHarvesCountInCurrentDay);
             GUILayout.Label("下一天:F");
-            GUILayout.Label("浇水:E" );
             GUILayout.Label("鼠标左键:摘果");
             GUILayout.Label("鼠标右键:移除");
             GUILayout.Label($"当前工具：{Constant.DisplayName(Global.CurrentTool.Value)}");
@@ -101,6 +100,7 @@ namespace ProjectindieFarm
 				{
 					TileSelectController.Instance.Position(tileWorldPos);
 					TileSelectController.Instance.Show();
+					AudioController.Instance.SfxShoveDIg.Play();
 				}
 				else if (grid[cellPosition] != null &&
 					grid[cellPosition].HasPlant != true &&
@@ -214,21 +214,25 @@ namespace ProjectindieFarm
 			if(Input.GetKeyDown(KeyCode.Alpha1))
 			{
 				Global.CurrentTool.Value = Constant.TOOL_HAND;
+				AudioController.Instance.SfxTake.Play();
 			}
 
 			if(Input.GetKeyDown(KeyCode.Alpha2))
 			{
 				Global.CurrentTool.Value = Constant.TOOL_SHOVEL;
+				AudioController.Instance.SfxTake.Play();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 Global.CurrentTool.Value = Constant.TOOL_SEED;
+				AudioController.Instance.SfxTake.Play();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 Global.CurrentTool.Value = Constant.TOOL_WATERING_SCAN;
+				AudioController.Instance.SfxTake.Play();
             }
         }
     }
