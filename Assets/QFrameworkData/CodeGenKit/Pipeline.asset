@@ -18,12 +18,16 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos: []
+    BindInfos:
+    - TypeName: SpriteRenderer
+      PathToRoot: Icon
+      MemberName: Icon
     ScriptsFolder: Assets/Scripts/Game
     ClassName: MouseController
     Namespace: ProjectindieFarm
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ProjectindieFarm\r\n{\r\n\tpublic
       partial class MouseController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:5e856ae4-0712-4af2-a7ad-7ac23170f606\r\nusing UnityEngine;\r\n\r\nnamespace
-      ProjectindieFarm\r\n{\r\n\tpublic partial class MouseController\r\n\t{\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:5be26876-dbab-4298-844a-930c04838c5e\r\nusing UnityEngine;\r\n\r\nnamespace
+      ProjectindieFarm\r\n{\r\n\tpublic partial class MouseController\r\n\t{\r\n\r\n\t\tpublic
+      SpriteRenderer Icon;\r\n\r\n\t}\r\n}\r\n"

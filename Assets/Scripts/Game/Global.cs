@@ -58,6 +58,7 @@ namespace ProjectindieFarm
 
 
         public static Player Player;
+        public static ToolController Mouse;
     }
 
     /// <summary>

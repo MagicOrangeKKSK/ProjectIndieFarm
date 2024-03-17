@@ -45,6 +45,7 @@ namespace ProjectindieFarm
             HideAllSelect();
             selectImage.Show();
             Global.Player.ToolIcon.sprite = icon;
+            Global.Mouse.Icon.sprite = icon;
         }
 
         private void Update()
