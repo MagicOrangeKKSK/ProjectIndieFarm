@@ -77,11 +77,7 @@ namespace ProjectindieFarm
             GUILayout.Space(10);
 			GUILayout.BeginVertical();
 			GUILayout.Label("天数:" + Global.Days.Value);
-            GUILayout.Label("果子:" + Global.FruitCount.Value);
-            GUILayout.Label("收割的果子:" + Global.RipeAndHarvesCountInCurrentDay);
             GUILayout.Label("下一天:F");
-            GUILayout.Label("鼠标左键:摘果");
-            GUILayout.Label("鼠标右键:移除");
 			GUILayout.EndVertical();
             GUILayout.EndHorizontal();
 			GUILayout.FlexibleSpace();
