@@ -13,7 +13,17 @@ namespace ProjectindieFarm
 		public Grid Grid;
 		public Tilemap Tilemap;
 
-		void Start()
+        private void Awake()
+        {
+			Global.Player = this;
+        }
+
+        private void OnDestroy()
+        {
+			Global.Player = null;
+        }
+
+        void Start()
 		{
 			Global.Days.Register((day) =>
 			{
@@ -72,7 +82,6 @@ namespace ProjectindieFarm
             GUILayout.Label("下一天:F");
             GUILayout.Label("鼠标左键:摘果");
             GUILayout.Label("鼠标右键:移除");
-            GUILayout.Label($"当前工具：{Constant.DisplayName(Global.CurrentTool.Value)}");
 			GUILayout.EndVertical();
             GUILayout.EndHorizontal();
 			GUILayout.FlexibleSpace();
