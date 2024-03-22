@@ -68,8 +68,11 @@ namespace ProjectindieFarm
     {
         public const string TOOL_HAND = "hand";
         public const string TOOL_SHOVEL = "shovel";
-        public const string TOOL_SEED = "seed";
         public const string TOOL_WATERING_SCAN = "watering_scan";
+
+
+        public const string TOOL_SEED_RADISH = "seed_radish";
+        public const string TOOL_SEED = "seed";
 
         public static string DisplayName(string tool)
         {
@@ -83,6 +86,8 @@ namespace ProjectindieFarm
                     return "ÖÖ×Ó";
                 case TOOL_WATERING_SCAN:
                     return "Ë®ºø";
+                case TOOL_SEED_RADISH:
+                    return "ÂÜ²·";
             }
             return string.Empty;
         }
