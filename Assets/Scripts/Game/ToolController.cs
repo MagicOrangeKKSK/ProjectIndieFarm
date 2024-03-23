@@ -84,6 +84,27 @@ namespace ProjectindieFarm
                             AudioController.Instance.SfxSeed.Play();
                         }
                     }
+                    else if (mShowGrid[cellPos] != null &&
+                                mShowGrid[cellPos].HasPlant != true &&
+                   Global.CurrentTool.Value == Constant.TOOL_SEED_RADISH)
+                    {
+                        Vector3 tileCenterPos = ShowSelect(cellPos);
+
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            var plantGameObject = ResController.Instance.PlantRadishPrefab
+                              .Instantiate()
+                              .Position(tileCenterPos);
+
+                            var plant = plantGameObject.GetComponent<PlantRadish>();
+                            plant.XCell = cellPos.x;
+                            plant.YCell = cellPos.y;
+                            PlantController.Instance.Plants[cellPos] = plant;
+                            plant.SetState(PlantStates.Seed);
+                            mShowGrid[cellPos].HasPlant = true;
+                            AudioController.Instance.SfxSeed.Play();
+                        }
+                    }
                     //½½Ë®
                     else if (mShowGrid[cellPos] != null &&
                                 mShowGrid[cellPos].Watered != true &&
@@ -111,12 +132,12 @@ namespace ProjectindieFarm
 
                         if(Input.GetMouseButtonDown(0))
                         {
-                            Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPos]);
+                            //Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPos]);
                             Global.HarvestCountInCurrentDay.Value++;
 
-                            Destroy(PlantController.Instance.Plants[cellPos].gameObject);//.SetState(PlantStates.Old);
+                            Destroy(PlantController.Instance.Plants[cellPos].GameObject);//.SetState(PlantStates.Old);
                             mShowGrid[cellPos].HasPlant = false;
-                            PlantController.Instance.Plants[cellPos].SetState(PlantStates.Old);
+                            //PlantController.Instance.Plants[cellPos].SetState(PlantStates.Old);
                             Global.FruitCount.Value++;
                             AudioController.Instance.SfxHarvest.Play();
                         }

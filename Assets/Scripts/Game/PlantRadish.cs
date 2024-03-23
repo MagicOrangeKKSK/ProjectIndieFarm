@@ -3,16 +3,7 @@ using QFramework;
 
 namespace ProjectindieFarm
 {
-	public interface IPlant
-	{
-		GameObject GameObject { get; }
-		PlantStates State { get; }
-
-		void SetState(PlantStates state);
-		void Grow(SoilData soilData);
-	}
-
-	public partial class Plant : ViewController,IPlant
+	public partial class PlantRadish : ViewController,IPlant
 	{
 		public int XCell;
 		public int YCell;
@@ -56,25 +47,29 @@ namespace ProjectindieFarm
                 FindObjectOfType<GridController>().ShowGrid[XCell, YCell].PlantStates = newState;
 			}
 		}
+        public int mSmallStateDay = 0;
 
-   
         public void Grow(SoilData soilData)
         {
-            if (State == PlantStates.Seed)
-            {
-                if (soilData.Watered)
-                {
-                    SetState(PlantStates.Small);
-                }
-            }
-            else if (State == PlantStates.Small)
-            {
-                if (soilData.Watered)
-                {
-                    SetState(PlantStates.Ripe);
-                }
-            }
-        }
-    }
+			if (State == PlantStates.Seed)
+			{
+				if (soilData.Watered)
+				{
+					SetState(PlantStates.Small);
+				}
+			}
+			else if (State == PlantStates.Small)
+			{
+				if (soilData.Watered)
+				{
+					mSmallStateDay++;
+					if (mSmallStateDay == 2)
+					{
+						SetState(PlantStates.Ripe);
+					}
+				}
+			}
+		}
+	}
 
 }
