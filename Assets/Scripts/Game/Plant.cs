@@ -10,6 +10,7 @@ namespace ProjectindieFarm
 
 		void SetState(PlantStates state);
 		void Grow(SoilData soilData);
+		int RipeDay { get; }
 	}
 
 	public partial class Plant : ViewController,IPlant
@@ -22,7 +23,8 @@ namespace ProjectindieFarm
 
 		public GameObject GameObject => gameObject;
 
-        public int RipeDay = -1;
+
+        public int RipeDay { get; private set; } = -1;
 	
 		public void SetState(PlantStates newState)
 		{

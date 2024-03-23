@@ -130,15 +130,23 @@ namespace ProjectindieFarm
                     {
                          ShowSelect(cellPos);
 
-                        if(Input.GetMouseButtonDown(0))
+                        if (Input.GetMouseButtonDown(0))
                         {
-                            //Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPos]);
+                            Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPos]);
                             Global.HarvestCountInCurrentDay.Value++;
+
+                            if (PlantController.Instance.Plants[cellPos] as Plant)
+                            {
+                                Global.FruitCount.Value++;
+                            }
+                            else if (PlantController.Instance.Plants[cellPos] as PlantRadish)
+                            {
+                                Global.RadishCount.Value++;
+                            }
 
                             Destroy(PlantController.Instance.Plants[cellPos].GameObject);//.SetState(PlantStates.Old);
                             mShowGrid[cellPos].HasPlant = false;
                             //PlantController.Instance.Plants[cellPos].SetState(PlantStates.Old);
-                            Global.FruitCount.Value++;
                             AudioController.Instance.SfxHarvest.Play();
                         }
                     }

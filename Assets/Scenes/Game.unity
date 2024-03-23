@@ -3292,10 +3292,13 @@ MonoBehaviour:
   SmallPlantPrefab: {fileID: 7933248704495709084, guid: 7b7fdc8903c912748a4ef4ca5ec6978a, type: 3}
   RipePrefab: {fileID: 4709442940488482353, guid: 27086713a65979d4b8f5196cd9d22eac, type: 3}
   PlantPrefab: {fileID: 7933248704495709084, guid: e4a0689857f853e45bd96e6bb85d42a4, type: 3}
+  PlantRadishPrefab: {fileID: 7933248704495709084, guid: 756e82520906e034abb706bd75054db7, type: 3}
   SeedSprite: {fileID: -7866928900747384746, guid: e30fffb0548129c4ea4c4950cba6aa1c, type: 3}
   SmallPlantSprite: {fileID: -8902951029311973782, guid: f0eb81cb98a9c0444b5aed3f5f549d11, type: 3}
   RipeSprite: {fileID: 853675080466277832, guid: f6b7d2ae1205a0344b748b054ffc2e25, type: 3}
   OldSprite: {fileID: -6728447469715521605, guid: 4911a77920b02ac408711adff9ab67d4, type: 3}
+  SeedRadishSprite: {fileID: -6257656149191112168, guid: d1b415fafa89b4f48aa642f608a6eac4, type: 3}
+  SmallPlantRadishSprite: {fileID: -3689203500237960935, guid: 5309f2e3bc2e512418d15376de2555be, type: 3}
 --- !u!4 &1102160897
 Transform:
   m_ObjectHideFlags: 0
@@ -5105,6 +5108,9 @@ MonoBehaviour:
   Btn4: {fileID: 1796134894}
   Btn4Icon: {fileID: 615582152}
   Btn4Select: {fileID: 1584934977}
+  Btn5: {fileID: 1599096471}
+  Btn5Icon: {fileID: 1903655507}
+  Btn5Select: {fileID: 46348177}
 --- !u!1 &1725753209
 GameObject:
   m_ObjectHideFlags: 0

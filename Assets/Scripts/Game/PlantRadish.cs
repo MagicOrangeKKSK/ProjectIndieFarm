@@ -13,7 +13,7 @@ namespace ProjectindieFarm
 
 		public GameObject GameObject => gameObject;
 
-        public int RipeDay = -1;
+        public int RipeDay { get; private set; } = -1;
 	
 		public void SetState(PlantStates newState)
 		{
@@ -28,15 +28,15 @@ namespace ProjectindieFarm
 				//«–ªª±Ìœ÷
 				if(newState == PlantStates.Small)
 				{
-					GetComponent<SpriteRenderer>().sprite = ResController.Instance.SmallPlantSprite;
+					GetComponent<SpriteRenderer>().sprite = ResController.Instance.SmallPlantRadishSprite;
 				}  
 				else if(newState == PlantStates.Ripe)
 				{
-					GetComponent<SpriteRenderer>().sprite = ResController.Instance.RipeSprite;
+					GetComponent<SpriteRenderer>().sprite = ResController.Instance.RipeRadishSprite;
 				}
 				else if(newState == PlantStates.Seed)
 				{
-					GetComponent<SpriteRenderer>().sprite = ResController.Instance.SeedSprite;
+					GetComponent<SpriteRenderer>().sprite = ResController.Instance.SeedRadishSprite;
 				}
 				else if(newState == PlantStates.Old)
 				{

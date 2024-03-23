@@ -16,6 +16,7 @@ namespace ProjectindieFarm
         /// 结果数量
         /// </summary>
         public static BindableProperty<int> FruitCount = new BindableProperty<int>();
+        public static BindableProperty<int> RadishCount = new BindableProperty<int>();
 
         /// <summary>
         /// 当前的工具
@@ -49,7 +50,7 @@ namespace ProjectindieFarm
         /// <summary>
         /// 当植物收割
         /// </summary>
-        public static EasyEvent<Plant> OnPlantharvest = new EasyEvent<Plant>();
+        public static EasyEvent<IPlant> OnPlantharvest = new EasyEvent<IPlant>();
         
         /// <summary>
         /// 当挑战完成
