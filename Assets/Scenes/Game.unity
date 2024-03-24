@@ -791,6 +791,7 @@ MonoBehaviour:
   GeneratePrefab: 0
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
+  Font: {fileID: 12800000, guid: 2df87f87bb66f0f45a6cfeaed4616fc6, type: 3}
 --- !u!4 &121646151
 Transform:
   m_ObjectHideFlags: 0
@@ -1124,8 +1125,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
-  m_sharedMaterial: {fileID: 7824364134555813472, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
+  m_sharedMaterial: {fileID: -4332947191520216424, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1682,8 +1683,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
-  m_sharedMaterial: {fileID: 7824364134555813472, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
+  m_sharedMaterial: {fileID: -4332947191520216424, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2298,8 +2299,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
-  m_sharedMaterial: {fileID: 7824364134555813472, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
+  m_sharedMaterial: {fileID: -4332947191520216424, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3299,6 +3300,7 @@ MonoBehaviour:
   OldSprite: {fileID: -6728447469715521605, guid: 4911a77920b02ac408711adff9ab67d4, type: 3}
   SeedRadishSprite: {fileID: -6257656149191112168, guid: d1b415fafa89b4f48aa642f608a6eac4, type: 3}
   SmallPlantRadishSprite: {fileID: -3689203500237960935, guid: 5309f2e3bc2e512418d15376de2555be, type: 3}
+  RipeRadishSprite: {fileID: 520748989501480910, guid: 55436fad7c494b3428aa68ccb7e32883, type: 3}
 --- !u!4 &1102160897
 Transform:
   m_ObjectHideFlags: 0
@@ -3467,8 +3469,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
-  m_sharedMaterial: {fileID: 7824364134555813472, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
+  m_sharedMaterial: {fileID: -4332947191520216424, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3892,8 +3894,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
-  m_sharedMaterial: {fileID: 7824364134555813472, guid: b410d73d3d60a084faa8d0940042a119, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
+  m_sharedMaterial: {fileID: -4332947191520216424, guid: ee48d22612a514b4292ce4d77fb623c6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4696,6 +4698,7 @@ MonoBehaviour:
   ArchitectureFullTypeName: 
   Grid: {fileID: 1589069106}
   Tilemap: {fileID: 1022696734}
+  Font: {fileID: 12800000, guid: 2df87f87bb66f0f45a6cfeaed4616fc6, type: 3}
   ToolIcon: {fileID: 441876282}
 --- !u!1 &1594946331
 GameObject:

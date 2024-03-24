@@ -55,7 +55,7 @@ namespace ProjectindieFarm
                     {
                         ShowSelect(cellPos);
 
-                        if (Input.GetMouseButtonDown(0))
+                        if (Input.GetMouseButton(0))
                         {
                             mTilemap.SetTile(cellPos, mGridController.Pen);
                             mShowGrid[cellPos] = new SoilData();
@@ -69,7 +69,7 @@ namespace ProjectindieFarm
                     {
                         Vector3 tileCenterPos = ShowSelect(cellPos);
 
-                        if (Input.GetMouseButtonDown(0))
+                        if (Input.GetMouseButton(0))
                         {
                             var plantGameObject = ResController.Instance.PlantPrefab
                               .Instantiate()
@@ -90,7 +90,7 @@ namespace ProjectindieFarm
                     {
                         Vector3 tileCenterPos = ShowSelect(cellPos);
 
-                        if (Input.GetMouseButtonDown(0))
+                        if (Input.GetMouseButton(0))
                         {
                             var plantGameObject = ResController.Instance.PlantRadishPrefab
                               .Instantiate()
@@ -112,7 +112,7 @@ namespace ProjectindieFarm
                     {
                         Vector3 tileCenterPos = ShowSelect(cellPos);
 
-                        if (Input.GetMouseButtonDown(0))
+                        if (Input.GetMouseButton(0))
                         {
                             mShowGrid[cellPos].Watered = true;
                             ResController.Instance.WaterPrefab
@@ -130,7 +130,7 @@ namespace ProjectindieFarm
                     {
                          ShowSelect(cellPos);
 
-                        if (Input.GetMouseButtonDown(0))
+                        if (Input.GetMouseButton(0))
                         {
                             Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPos]);
                             Global.HarvestCountInCurrentDay.Value++;
