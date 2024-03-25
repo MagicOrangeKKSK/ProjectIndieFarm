@@ -37,9 +37,11 @@ namespace ProjectindieFarm
 			{
 		 
 				Global.RipeAndHarvesCountInCurrentDay.Value = 0;
-				Global.HarvestCountInCurrentDay.Value = 0;
+				Global.RipeAndHarvesRadishCountInCurrentDay.Value = 0;
+                Global.HarvestCountInCurrentDay.Value = 0;
+				Global.RadishHarvestCountInCurrentDay.Value = 0;
 
-				var soilDatas = FindObjectOfType<GridController>().ShowGrid;
+                var soilDatas = FindObjectOfType<GridController>().ShowGrid;
 
 				PlantController.Instance.Plants.ForEach((x, y, plant) =>
 				{

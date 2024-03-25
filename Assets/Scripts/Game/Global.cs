@@ -27,14 +27,24 @@ namespace ProjectindieFarm
         /// 当天成熟的数量
         /// </summary>
         public static BindableProperty<int> RipeAndHarvesCountInCurrentDay = new BindableProperty<int>(0);
+        public static BindableProperty<int> RipeAndHarvesRadishCountInCurrentDay = new BindableProperty<int>(0);
+
 
         public static BindableProperty<int> HarvestCountInCurrentDay = new BindableProperty<int>(0);
+
+        /// <summary>
+        /// 当天萝卜收割的数量
+        /// </summary>
+        public static BindableProperty<int> RadishHarvestCountInCurrentDay = new BindableProperty<int>(0);
+
 
         public static List<Challenge> Challenges = new List<Challenge>()
         {
             new ChallengeHarvestAFruit(),
             new ChallengeRipeAndHarverstTwoFruitsInADay(),
             new ChallengeRipeAndHarverstFiveFruitsInADay(),
+            new ChallengeHarvestARadish(),
+            new ChallengeRipeAndHarvestFruitAndRadishInADay(),
         };
         public static List<Challenge> ActiveChallenges = new List<Challenge>()
         {

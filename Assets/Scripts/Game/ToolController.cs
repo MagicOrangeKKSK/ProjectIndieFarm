@@ -133,7 +133,6 @@ namespace ProjectindieFarm
                         if (Input.GetMouseButton(0))
                         {
                             Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPos]);
-                            Global.HarvestCountInCurrentDay.Value++;
 
                             if (PlantController.Instance.Plants[cellPos] as Plant)
                             {
