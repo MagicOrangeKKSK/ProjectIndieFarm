@@ -36,10 +36,10 @@ namespace ProjectindieFarm
 			Global.Days.Register((day) =>
 			{
 		 
-				Global.RipeAndHarvesCountInCurrentDay.Value = 0;
-				Global.RipeAndHarvesRadishCountInCurrentDay.Value = 0;
-                Global.HarvestCountInCurrentDay.Value = 0;
-				Global.RadishHarvestCountInCurrentDay.Value = 0;
+				ChallengeController.RipeAndHarvesCountInCurrentDay.Value = 0;
+				ChallengeController.RipeAndHarvesRadishCountInCurrentDay.Value = 0;
+                ChallengeController.HarvestCountInCurrentDay.Value = 0;
+				ChallengeController.RadishHarvestCountInCurrentDay.Value = 0;
 
                 var soilDatas = FindObjectOfType<GridController>().ShowGrid;
 

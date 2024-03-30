@@ -1,10 +1,54 @@
 using UnityEngine;
 using QFramework;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace ProjectindieFarm
 {
     public partial class ChallengeController : ViewController
     {
+        /// <summary>
+        /// 当天成熟的数量
+        /// </summary>
+        public static BindableProperty<int> RipeAndHarvesCountInCurrentDay = new BindableProperty<int>(0);
+        public static BindableProperty<int> RipeAndHarvesRadishCountInCurrentDay = new BindableProperty<int>(0);
+
+
+        public static BindableProperty<int> HarvestCountInCurrentDay = new BindableProperty<int>(0);
+
+        /// <summary>
+        /// 当天萝卜收割的数量
+        /// </summary>
+        public static BindableProperty<int> RadishHarvestCountInCurrentDay = new BindableProperty<int>(0);
+
+
+        public static List<Challenge> Challenges = new List<Challenge>()
+        {
+            new ChallengeHarvestAFruit(),
+            new ChallengeRipeAndHarverstTwoFruitsInADay(),
+            new ChallengeRipeAndHarverstFiveFruitsInADay(),
+            new ChallengeHarvestARadish(),
+            new ChallengeRipeAndHarvestFruitAndRadishInADay(),
+        };
+        public static List<Challenge> ActiveChallenges = new List<Challenge>()
+        {
+
+        };
+
+        public static List<Challenge> FinishedChallenges = new List<Challenge>()
+        {
+
+        };
+
+
+
+        /// <summary>
+        /// 当挑战完成
+        /// </summary>
+        public static EasyEvent<Challenge> OnChalengeFinish = new EasyEvent<Challenge>();
+
+
+
         public Font Font;
         private GUIStyle mLabelStyle;
 
@@ -15,6 +59,32 @@ namespace ProjectindieFarm
                 font = this.Font
             };
 
+            //随机一个Challenge
+            var randomItem = Challenges.GetRandomItem();
+            ActiveChallenges.Add(randomItem);
+            //监听成熟的植物是否当天成熟且当天收割的
+            Global.OnPlantharvest.Register(plant =>
+            {
+                if (plant is Plant)
+                {
+                    HarvestCountInCurrentDay.Value++;
+                    if (plant.RipeDay == Global.Days.Value)
+                    {
+                        RipeAndHarvesCountInCurrentDay.Value++;
+                    }
+                }
+                else if (plant is PlantRadish)
+                {
+                    RadishHarvestCountInCurrentDay.Value++;
+                    if (plant.RipeDay == Global.Days.Value)
+                    {
+                        RipeAndHarvesRadishCountInCurrentDay.Value++;
+                    }
+                }
+
+            }).UnRegisterWhenGameObjectDestroyed(this);
+
+
         }
 
         private void OnGUI()
@@ -22,17 +92,58 @@ namespace ProjectindieFarm
             IMGUIHelper.SetDesignResolution(960, 360);
             GUI.Label(new Rect(960 - 300, 0, 300, 24), "@@ 挑战 @@", mLabelStyle);
 
-            for (var i = 0; i < Global.ActiveChallenges.Count; i++)
+            for (var i = 0; i < ActiveChallenges.Count; i++)
             {
-                var challenge = Global.ActiveChallenges[i];
+                var challenge = ActiveChallenges[i];
                 GUI.Label(new Rect(960 - 300, 20 + i * 20, 300, 24), challenge.Name, mLabelStyle);
             }
 
-            for (var i = 0; i < Global.FinishedChallenges.Count; i++)
+            for (var i = 0; i < FinishedChallenges.Count; i++)
             {
-                var challenge = Global.FinishedChallenges[i];
-                GUI.Label(new Rect(960 - 300, 20 + (i + Global.ActiveChallenges.Count) * 20, 300, 24), $"<color=green>√ {challenge.Name}</color>", mLabelStyle);
+                var challenge = FinishedChallenges[i];
+                GUI.Label(new Rect(960 - 300, 20 + (i + ActiveChallenges.Count) * 20, 300, 24), $"<color=green>√ {challenge.Name}</color>", mLabelStyle);
             }
         }
+
+        private void Update()
+        {
+            bool hasFinishChallenge = false;
+            foreach (var challenge in ActiveChallenges)
+            {
+                if (challenge.State == Challenge.States.NotStart)
+                {
+                    challenge.StartDate = Global.Days.Value;
+                    challenge.OnStart();
+                    challenge.State = Challenge.States.Started;
+                }
+
+                if (challenge.State == Challenge.States.Started)
+                {
+                    if (challenge.CheckFinish())
+                    {
+                        challenge.OnFinish();
+                        challenge.State = Challenge.States.Finished;
+                        OnChalengeFinish.Trigger(challenge);
+                        FinishedChallenges.Add(challenge);
+                        hasFinishChallenge = true;
+
+                    }
+                }
+            }
+
+            if (hasFinishChallenge)
+            {
+                ActiveChallenges.RemoveAll(challenge => challenge.State == Challenge.States.Finished);
+            }
+
+            if (ActiveChallenges.Count == 0 &&
+                FinishedChallenges.Count != Challenges.Count)
+            {
+                //否则随机选择一个未开始的挑战加入
+                var randomItem = Challenges.Where(c => c.State == Challenge.States.NotStart).ToList().GetRandomItem();
+                ActiveChallenges.Add(randomItem);
+            }
+        }
+
     }
 }

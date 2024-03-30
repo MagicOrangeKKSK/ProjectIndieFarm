@@ -24,49 +24,9 @@ namespace ProjectindieFarm
         public static BindableProperty<string> CurrentTool = new BindableProperty<string>("手");
 
         /// <summary>
-        /// 当天成熟的数量
-        /// </summary>
-        public static BindableProperty<int> RipeAndHarvesCountInCurrentDay = new BindableProperty<int>(0);
-        public static BindableProperty<int> RipeAndHarvesRadishCountInCurrentDay = new BindableProperty<int>(0);
-
-
-        public static BindableProperty<int> HarvestCountInCurrentDay = new BindableProperty<int>(0);
-
-        /// <summary>
-        /// 当天萝卜收割的数量
-        /// </summary>
-        public static BindableProperty<int> RadishHarvestCountInCurrentDay = new BindableProperty<int>(0);
-
-
-        public static List<Challenge> Challenges = new List<Challenge>()
-        {
-            new ChallengeHarvestAFruit(),
-            new ChallengeRipeAndHarverstTwoFruitsInADay(),
-            new ChallengeRipeAndHarverstFiveFruitsInADay(),
-            new ChallengeHarvestARadish(),
-            new ChallengeRipeAndHarvestFruitAndRadishInADay(),
-        };
-        public static List<Challenge> ActiveChallenges = new List<Challenge>()
-        {
-
-        };
-
-        public static List<Challenge> FinishedChallenges = new List<Challenge>()
-        {
-
-        };
-
-
-        /// <summary>
         /// 当植物收割
         /// </summary>
         public static EasyEvent<IPlant> OnPlantharvest = new EasyEvent<IPlant>();
-        
-        /// <summary>
-        /// 当挑战完成
-        /// </summary>
-        public static EasyEvent<Challenge> OnChalengeFinish = new EasyEvent<Challenge>();
-
 
         public static Player Player;
         public static ToolController Mouse;
