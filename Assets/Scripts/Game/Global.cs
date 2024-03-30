@@ -16,7 +16,11 @@ namespace ProjectindieFarm
         /// 结果数量
         /// </summary>
         public static BindableProperty<int> FruitCount = new BindableProperty<int>();
+        public static BindableProperty<int> FruitSeedCount = new BindableProperty<int>(6);
+
         public static BindableProperty<int> RadishCount = new BindableProperty<int>();
+        public static BindableProperty<int> RadishSeedCount = new BindableProperty<int>(6);
+             
 
         /// <summary>
         /// 当前的工具
