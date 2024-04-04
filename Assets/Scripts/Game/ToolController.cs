@@ -40,12 +40,14 @@ namespace ProjectindieFarm
             var playerCellPos = mGrid.WorldToCell(Global.Player.Position());
             var worldMousePos = mMainCamera.ScreenToWorldPoint(Input.mousePosition);
             worldMousePos.z = 0;
+
             var cellPos = mGrid.WorldToCell(worldMousePos + new Vector3(0.25f,-0.25f));
 
-            Icon.Position(worldMousePos);
             mSprite.enabled = false;
 
-            if (Mathf.Max(Mathf.Abs(cellPos.x - playerCellPos.x) , Mathf.Abs(cellPos.y - playerCellPos.y)) == 1)
+            if (Mathf.Max(Mathf.Abs(cellPos.x - playerCellPos.x) , Mathf.Abs(cellPos.y - playerCellPos.y)) == 1 || 
+               (cellPos.x - playerCellPos.x == 0 && cellPos.y - playerCellPos.y == 0 ) //目前嗐没有带碰撞的植物 
+               )
             {
                 if (cellPos.x < 10 && cellPos.x >= 0 && cellPos.y < 10 && cellPos.y >= 0)
                 {
@@ -161,6 +163,10 @@ namespace ProjectindieFarm
                     }
                 }
             }
+
+
+            Icon.Position(worldMousePos);
+
         }
 
         private Vector3 ShowSelect(Vector3Int cellPos)
