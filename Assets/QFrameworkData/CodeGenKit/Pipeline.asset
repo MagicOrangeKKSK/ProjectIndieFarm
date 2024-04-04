@@ -18,20 +18,12 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos:
-    - TypeName: UnityEngine.UI.Button
-      PathToRoot: BtnBuyFruitSeed
-      MemberName: BtnBuyFruitSeed
-    - TypeName: UnityEngine.UI.Button
-      PathToRoot: BtnBuyRadishSeed
-      MemberName: BtnBuyRadishSeed
+    BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: UIShop
+    ClassName: TimeController
     Namespace: ProjectindieFarm
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ProjectindieFarm\r\n{\r\n\tpublic
-      partial class UIShop : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class TimeController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:15eb6855-355b-4180-af72-2504613aa7cf\r\nusing UnityEngine;\r\n\r\nnamespace
-      ProjectindieFarm\r\n{\r\n\tpublic partial class UIShop\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.UI.Button BtnBuyFruitSeed;\r\n\r\n\t\tpublic UnityEngine.UI.Button
-      BtnBuyRadishSeed;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:d25d2c64-c45b-4b3e-b515-89b131149c2a\r\nusing UnityEngine;\r\n\r\nnamespace
+      ProjectindieFarm\r\n{\r\n\tpublic partial class TimeController\r\n\t{\r\n\r\n\t}\r\n}\r\n"
