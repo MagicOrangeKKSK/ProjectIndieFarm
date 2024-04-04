@@ -40,7 +40,14 @@ namespace ProjectindieFarm
 
         };
 
-
+        /// <summary>
+        /// 收获过的果实数量
+        /// </summary>
+        public static int HarvestedFruitCount = 0;
+        /// <summary>
+        /// 收获过的萝卜数量
+        /// </summary>
+        public static int HarvestedRedishCount = 0;
 
         /// <summary>
         /// 当挑战完成
@@ -68,6 +75,7 @@ namespace ProjectindieFarm
                 if (plant is Plant)
                 {
                     HarvestCountInCurrentDay.Value++;
+                    HarvestedFruitCount++;
                     if (plant.RipeDay == Global.Days.Value)
                     {
                         RipeAndHarvesCountInCurrentDay.Value++;
@@ -76,6 +84,7 @@ namespace ProjectindieFarm
                 else if (plant is PlantRadish)
                 {
                     RadishHarvestCountInCurrentDay.Value++;
+                    HarvestedRedishCount++;
                     if (plant.RipeDay == Global.Days.Value)
                     {
                         RipeAndHarvesRadishCountInCurrentDay.Value++;
