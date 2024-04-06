@@ -35,6 +35,13 @@ namespace ProjectindieFarm
 
             mSprite.enabled = false;
         }
+        
+        private ITool mShovel = new ToolShovel();
+        private ITool mSeed = new ToolSeed();
+        private ITool mWateringScan = new ToolWateringScan();
+        private ITool mSeedRadish = new ToolSeedRadish();
+        private ITool mHand = new ToolHand();
+        private ToolData mToolData = new ToolData();
 
         private void Update()
         {
@@ -52,119 +59,58 @@ namespace ProjectindieFarm
             {
                 if (cellPos.x < 10 && cellPos.x >= 0 && cellPos.y < 10 && cellPos.y >= 0)
                 {
-                    //耕地
-                    if (Global.CurrentTool.Value == Constant.TOOL_SHOVEL &&
-                            mShowGrid[cellPos] == null)
-                    {
-                        ShowSelect(cellPos);
+                    mToolData.ShowGrid = mShowGrid;
+                    mToolData.CellPos = cellPos;
+                    mToolData.Pen = mGridController.Pen;
+                    mToolData.SoilTilemap = mTilemap;
 
+                    //耕地
+                    if (mShovel.Selectable(mToolData))
+                    {
+                        mToolData.GridCenterPos = ShowSelect(cellPos);
                         if (Input.GetMouseButton(0))
                         {
-                            mTilemap.SetTile(cellPos, mGridController.Pen);
-                            mShowGrid[cellPos] = new SoilData();
-                            AudioController.Instance.SfxShoveDig.Play();
+                            mShovel.Use(mToolData);
                         }
                     }
                     //播种
-                    else if (mShowGrid[cellPos] != null &&
-                                 mShowGrid[cellPos].HasPlant != true &&
-                    Global.CurrentTool.Value == Constant.TOOL_SEED)
+                    else if (mSeed.Selectable(mToolData))
                     {
-                        if (Global.FruitSeedCount.Value > 0)
-                        {
-                            Vector3 tileCenterPos = ShowSelect(cellPos);
-
-                            if (Input.GetMouseButton(0))
-                            {
-                                Global.FruitSeedCount.Value--;
-
-                                var plantGameObject = ResController.Instance.PlantPrefab
-                                  .Instantiate()
-                                  .Position(tileCenterPos);
-
-                                var plant = plantGameObject.GetComponent<Plant>();
-                                plant.XCell = cellPos.x;
-                                plant.YCell = cellPos.y;
-                                PlantController.Instance.Plants[cellPos] = plant;
-                                plant.SetState(PlantStates.Seed);
-                                mShowGrid[cellPos].HasPlant = true;
-                                AudioController.Instance.SfxSeed.Play();
-                            }
-                        }
-                    }
-                    else if (mShowGrid[cellPos] != null &&
-                                mShowGrid[cellPos].HasPlant != true &&
-                   Global.CurrentTool.Value == Constant.TOOL_SEED_RADISH)
-                    {
-                        if (Global.RadishSeedCount.Value > 0)
-                        {
-                            Vector3 tileCenterPos = ShowSelect(cellPos);
-
-                            if (Input.GetMouseButton(0))
-                            {
-                                Global.RadishSeedCount.Value--;
-
-                                var plantGameObject = ResController.Instance.PlantRadishPrefab
-                                  .Instantiate()
-                                  .Position(tileCenterPos);
-
-                                var plant = plantGameObject.GetComponent<PlantRadish>();
-                                plant.XCell = cellPos.x;
-                                plant.YCell = cellPos.y;
-                                PlantController.Instance.Plants[cellPos] = plant;
-                                plant.SetState(PlantStates.Seed);
-                                mShowGrid[cellPos].HasPlant = true;
-                                AudioController.Instance.SfxSeed.Play();
-                            }
-                        }
-                    }   
-                    //浇水
-                    else if (mShowGrid[cellPos] != null &&
-                                mShowGrid[cellPos].Watered != true &&
-                                Global.CurrentTool.Value == Constant.TOOL_WATERING_SCAN)
-                    {
-                        Vector3 tileCenterPos = ShowSelect(cellPos);
-
+                        mToolData.GridCenterPos = ShowSelect(cellPos);
                         if (Input.GetMouseButton(0))
                         {
-                            mShowGrid[cellPos].Watered = true;
-                            ResController.Instance.WaterPrefab
-                                .Instantiate()
-                                .Position(tileCenterPos);
-                            mShowGrid[cellPos].Watered = true;
-                            AudioController.Instance.SfxWater.Play();
+                            mSeed.Use(mToolData);
+                        }
+                    }
+                    else if (mSeedRadish.Selectable(mToolData))
+                    {
+                        mToolData.GridCenterPos = ShowSelect(cellPos);
+                        if (Input.GetMouseButton(0))
+                        {
+                            mSeedRadish.Use(mToolData);
+                        }
+                    }
+                    //浇水
+                    else if (mWateringScan.Selectable(mToolData))
+                    {
+                        mToolData.GridCenterPos = ShowSelect(cellPos);
+                        if (Input.GetMouseButton(0))
+                        {
+                            mWateringScan.Use(mToolData);
                         }
                     }
                     //手
-                    else if (mShowGrid[cellPos] != null &&
-                    mShowGrid[cellPos].HasPlant == true &&
-                    mShowGrid[cellPos].PlantStates == PlantStates.Ripe &&
-                    Global.CurrentTool.Value == Constant.TOOL_HAND)
+                    else if (mHand.Selectable(mToolData))
                     {
-                        ShowSelect(cellPos);
-
+                        mToolData.GridCenterPos = ShowSelect(cellPos);
                         if (Input.GetMouseButton(0))
                         {
-                            Global.OnPlantharvest.Trigger(PlantController.Instance.Plants[cellPos]);
-
-                            if (PlantController.Instance.Plants[cellPos] as Plant)
-                            {
-                                Global.FruitCount.Value++;
-                            }
-                            else if (PlantController.Instance.Plants[cellPos] as PlantRadish)
-                            {
-                                Global.RadishCount.Value++;
-                            }
-
-                            Destroy(PlantController.Instance.Plants[cellPos].GameObject);//.SetState(PlantStates.Old);
-                            mShowGrid[cellPos].HasPlant = false;
-                            //PlantController.Instance.Plants[cellPos].SetState(PlantStates.Old);
-                            AudioController.Instance.SfxHarvest.Play();
+                            mHand.Use(mToolData);
                         }
                     }
                 }
             }
-
+         
 
             Icon.Position(worldMousePos);
 
