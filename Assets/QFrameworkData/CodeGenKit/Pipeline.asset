@@ -19,41 +19,19 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos:
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxTake
-      MemberName: SfxTake
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxShoveDig
-      MemberName: SfxShoveDig
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxSeed
-      MemberName: SfxSeed
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxWater
-      MemberName: SfxWater
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxHarvest
-      MemberName: SfxHarvest
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxChallengeFinish
-      MemberName: SfxChallengeFinish
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxNextDay
-      MemberName: SfxNextDay
-    - TypeName: UnityEngine.AudioSource
-      PathToRoot: SfxBuy
-      MemberName: SfxBuy
+    - TypeName: UnityEngine.Tilemaps.Tilemap
+      PathToRoot: Ground
+      MemberName: Ground
+    - TypeName: UnityEngine.Tilemaps.Tilemap
+      PathToRoot: Soil
+      MemberName: Soil
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: AudioController
+    ClassName: GridController
     Namespace: ProjectindieFarm
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ProjectindieFarm\r\n{\r\n\tpublic
-      partial class AudioController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class GridController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:e8ead0db-6a94-45bc-8498-255a2fb91548\r\nusing UnityEngine;\r\n\r\nnamespace
-      ProjectindieFarm\r\n{\r\n\tpublic partial class AudioController\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.AudioSource SfxTake;\r\n\r\n\t\tpublic UnityEngine.AudioSource
-      SfxShoveDig;\r\n\r\n\t\tpublic UnityEngine.AudioSource SfxSeed;\r\n\r\n\t\tpublic
-      UnityEngine.AudioSource SfxWater;\r\n\r\n\t\tpublic UnityEngine.AudioSource
-      SfxHarvest;\r\n\r\n\t\tpublic UnityEngine.AudioSource SfxChallengeFinish;\r\n\r\n\t\tpublic
-      UnityEngine.AudioSource SfxNextDay;\r\n\r\n\t\tpublic UnityEngine.AudioSource
-      SfxBuy;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:a94d6698-6213-4180-a0d9-3240355fd6e7\r\nusing UnityEngine;\r\n\r\nnamespace
+      ProjectindieFarm\r\n{\r\n\tpublic partial class GridController\r\n\t{\r\n\r\n\t\tpublic
+      UnityEngine.Tilemaps.Tilemap Ground;\r\n\r\n\t\tpublic UnityEngine.Tilemaps.Tilemap
+      Soil;\r\n\r\n\t}\r\n}\r\n"

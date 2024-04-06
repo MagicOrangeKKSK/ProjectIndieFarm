@@ -13,6 +13,7 @@ namespace ProjectindieFarm
         private SpriteRenderer mSprite;
 
         private Tilemap mTilemap;
+
         private void Awake()
         {
             Global.Mouse = this;
@@ -26,7 +27,7 @@ namespace ProjectindieFarm
         private void Start()
         {
             mGridController = FindObjectOfType<GridController>();
-            mTilemap = mGridController.Tilemap;
+            mTilemap = mGridController.Soil;
              mGrid= mGridController.GetComponent<Grid>();
             mMainCamera = Camera.main; 
             mSprite = GetComponent<SpriteRenderer>();

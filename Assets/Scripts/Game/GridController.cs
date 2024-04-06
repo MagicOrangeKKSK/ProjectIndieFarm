@@ -8,19 +8,29 @@ namespace ProjectindieFarm
 	{
 		private EasyGrid<SoilData> mShowGrid = new EasyGrid<SoilData>(10, 10);
 		public EasyGrid<SoilData> ShowGrid => mShowGrid;
+		
 		public TileBase Pen;
+		public TileBase PlantablePen;
 
 		void Start()
 		{
-			Tilemap.ClearAllTiles();
+			Soil.ClearAllTiles();
 
 			mShowGrid[0, 0] = new SoilData();
 			mShowGrid[2, 2] = new SoilData();
 
+			for(int i = 0; i < 10; i++)
+			{
+				for(int j = 0; j < 10; j++)
+				{
+                    Ground.SetTile(new Vector3Int(i,j),PlantablePen);
+                }
+            }
+
 			mShowGrid.ForEach((x, y, show) =>
 			{
 				if (show != null)
-					Tilemap.SetTile(new Vector3Int(x, y), Pen);
+                    Soil.SetTile(new Vector3Int(x, y), Pen);
 			});
 		}
 
