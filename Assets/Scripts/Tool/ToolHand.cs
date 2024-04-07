@@ -8,14 +8,13 @@ namespace ProjectindieFarm
 {
     public class ToolHand : ITool
     {
-
+        public string Name { get;  set; } = "hand";
 
         public bool Selectable(ToolData toolData)
         {
             return toolData.ShowGrid[toolData.CellPos] != null &&
-                        toolData.ShowGrid[toolData.CellPos].HasPlant  &&
-                        toolData.ShowGrid[toolData.CellPos].PlantStates == PlantStates.Ripe &&
-                        Global.CurrentTool.Value == Constant.TOOL_HAND;
+                        toolData.ShowGrid[toolData.CellPos].HasPlant &&
+                        toolData.ShowGrid[toolData.CellPos].PlantStates == PlantStates.Ripe;
         }
 
 

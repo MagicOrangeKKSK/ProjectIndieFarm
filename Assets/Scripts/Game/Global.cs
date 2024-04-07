@@ -25,7 +25,7 @@ namespace ProjectindieFarm
         /// <summary>
         /// 当前的工具
         /// </summary>
-        public static BindableProperty<string> CurrentTool = new BindableProperty<string>("手");
+        public static BindableProperty<ITool> CurrentTool = new BindableProperty<ITool>(Constant.ToolHand);
 
         /// <summary>
         /// 当植物收割
@@ -39,32 +39,5 @@ namespace ProjectindieFarm
     /// <summary>
     /// 常量
     /// </summary>
-    public class Constant
-    {
-        public const string TOOL_HAND = "hand";
-        public const string TOOL_SHOVEL = "shovel";
-        public const string TOOL_WATERING_SCAN = "watering_scan";
-
-
-        public const string TOOL_SEED_RADISH = "seed_radish";
-        public const string TOOL_SEED = "seed";
-
-        public static string DisplayName(string tool)
-        {
-            switch (tool)
-            {
-                case TOOL_HAND:
-                    return "手";
-                case TOOL_SHOVEL:
-                    return "铁锹";
-                case TOOL_SEED:
-                    return "种子";
-                case TOOL_WATERING_SCAN:
-                    return "水壶";
-                case TOOL_SEED_RADISH:
-                    return "萝卜";
-            }
-            return string.Empty;
-        }
-    }
+    
 }

@@ -6,15 +6,13 @@ using UnityEngine.Tilemaps;
 
 namespace ProjectindieFarm
 {
-    public class ToolWateringScan : ITool
+    public class ToolWateringCan : ITool
     {
-
-
+        public string Name { get; set; } = "watering_can";
         public bool Selectable(ToolData toolData)
         {
             return toolData.ShowGrid[toolData.CellPos] != null &&
-                        toolData.ShowGrid[toolData.CellPos].Watered != true &&
-                        Global.CurrentTool.Value == Constant.TOOL_WATERING_SCAN;
+                        toolData.ShowGrid[toolData.CellPos].Watered != true;
         }
 
 

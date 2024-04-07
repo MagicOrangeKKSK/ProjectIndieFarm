@@ -8,12 +8,11 @@ namespace ProjectindieFarm
 {
     public class ToolShovel : ITool
     {
- 
+        public string Name { get; set; } = "shovel";
 
         public bool Selectable(ToolData toolData)
         {
-            return (Global.CurrentTool.Value == Constant.TOOL_SHOVEL &&
-                            toolData.ShowGrid[toolData.CellPos] == null);
+            return  toolData.ShowGrid[toolData.CellPos] == null;
         }
 
   

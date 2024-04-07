@@ -17,6 +17,7 @@ namespace ProjectindieFarm
     }
     public interface ITool 
     {
+          string Name { get; set; }
         //bool Selectable();
         bool Selectable(ToolData toolData);
         void Use(ToolData toolData);

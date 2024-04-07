@@ -8,13 +8,12 @@ namespace ProjectindieFarm
 {
     public class ToolSeedRadish : ITool
     {
-
+        public string Name { get; set; } = "seed_radish";
 
         public bool Selectable(ToolData toolData)
         {
             return toolData.ShowGrid[toolData.CellPos] != null &&
                         toolData.ShowGrid[toolData.CellPos].HasPlant != true &&
-                        Global.CurrentTool.Value == Constant.TOOL_SEED_RADISH &&
                         Global.RadishSeedCount.Value > 0;
         }
 

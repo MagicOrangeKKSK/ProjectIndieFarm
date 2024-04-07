@@ -36,11 +36,7 @@ namespace ProjectindieFarm
             mSprite.enabled = false;
         }
         
-        private ITool mShovel = new ToolShovel();
-        private ITool mSeed = new ToolSeed();
-        private ITool mWateringScan = new ToolWateringScan();
-        private ITool mSeedRadish = new ToolSeedRadish();
-        private ITool mHand = new ToolHand();
+     
         private ToolData mToolData = new ToolData();
 
         private void Update()
@@ -64,53 +60,16 @@ namespace ProjectindieFarm
                     mToolData.Pen = mGridController.Pen;
                     mToolData.SoilTilemap = mTilemap;
 
-                    //耕地
-                    if (mShovel.Selectable(mToolData))
+                    if (Global.CurrentTool.Value.Selectable(mToolData))
                     {
                         mToolData.GridCenterPos = ShowSelect(cellPos);
                         if (Input.GetMouseButton(0))
                         {
-                            mShovel.Use(mToolData);
-                        }
-                    }
-                    //播种
-                    else if (mSeed.Selectable(mToolData))
-                    {
-                        mToolData.GridCenterPos = ShowSelect(cellPos);
-                        if (Input.GetMouseButton(0))
-                        {
-                            mSeed.Use(mToolData);
-                        }
-                    }
-                    else if (mSeedRadish.Selectable(mToolData))
-                    {
-                        mToolData.GridCenterPos = ShowSelect(cellPos);
-                        if (Input.GetMouseButton(0))
-                        {
-                            mSeedRadish.Use(mToolData);
-                        }
-                    }
-                    //浇水
-                    else if (mWateringScan.Selectable(mToolData))
-                    {
-                        mToolData.GridCenterPos = ShowSelect(cellPos);
-                        if (Input.GetMouseButton(0))
-                        {
-                            mWateringScan.Use(mToolData);
-                        }
-                    }
-                    //手
-                    else if (mHand.Selectable(mToolData))
-                    {
-                        mToolData.GridCenterPos = ShowSelect(cellPos);
-                        if (Input.GetMouseButton(0))
-                        {
-                            mHand.Use(mToolData);
+                            Global.CurrentTool.Value.Use(mToolData);
                         }
                     }
                 }
             }
-         
 
             Icon.Position(worldMousePos);
 
