@@ -10,34 +10,57 @@ namespace ProjectindieFarm
 {
     public class UISlot : MonoBehaviour
     {
+        public static Func<string, Sprite> IconLoader;
+        public static Action<UISlot> OnItemSelect;
+
         public Image Icon;
         public Image Select;
         public TextMeshProUGUI ShortCut;
+        public TextMeshProUGUI Count;
 
         public Button Button;
 
-        private ISlotData mData;
-        public ISlotData Data => mData;
+        private Item mData;
+        public Item Data => mData;
 
         private void Awake()
         {
             Icon.sprite = null;
             Select.Hide();
             ShortCut.text = "";
+            Count.Hide();
+
+            Button.onClick.AddListener(() =>
+            {
+                OnItemSelect?.Invoke(this);
+            });
+
         }
 
-        public void SetData(ISlotData data,string shortCut)
+#if UNITY_EDITOR
+
+        private void OnValidate()
+        {
+           if(transform.Find("Count"))
+                Count = transform.Find("Count").GetComponent<TextMeshProUGUI>();
+        }
+#endif
+
+        public void SetData(Item data, string shortCut)
         {
             mData = data;
-            Icon.sprite = mData.Icon;
+            Debug.Log(shortCut);
+            //Icon.sprite = ResController.Instance.LoadSprite(mData.IconName);
+            Icon.sprite = IconLoader?.Invoke(mData.IconName);
             ShortCut.text = shortCut;
+            if (data.Countable)
+            {
+                Count.text = data.Count.ToString();
+                Count.Show();
+            }
         }
     
     }
 
-    public class SlotData : ISlotData
-    {
-        public Sprite Icon { get; set; }
-        public Action OnSelect { get ; set; }
-    }
+
 }

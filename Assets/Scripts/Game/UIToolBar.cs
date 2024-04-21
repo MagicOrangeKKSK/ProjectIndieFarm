@@ -13,6 +13,8 @@ namespace ProjectindieFarm
 
         void Start()
         {
+            UISlot.IconLoader = ResController.Instance.LoadSprite;
+            UISlot.OnItemSelect = slot => ChangeTool(slot);
 
             ToolbarSlots.Add(ToolbarSlot1);
             ToolbarSlots.Add(ToolbarSlot2);
@@ -31,31 +33,21 @@ namespace ProjectindieFarm
                 if(i < Config.Items.Count)
                 {
                     var item = Config.Items[i];
-                    var index = i;
-                    slot.SetData(new SlotData()
-                    {
-                        Icon = ResController.Instance.LoadSprite(item.IconName),
-                       OnSelect = () => ChangeTool(index, item.Tool)
-                    }, (index + 1).ToString()) ;
+                    Debug.Log((item == null)+"  "+Config.Items.Count);
+                    slot.SetData(item, (i + 1).ToString()) ;
                 }
             }
 
-
-            for (int i = ToolbarSlots.Count; i-- > 0;)
-            {
-                int j = i;
-                ToolbarSlots[j].Button.onClick.AddListener(() =>
-                {
-                    ToolbarSlots[j].Data?.OnSelect?.Invoke();
-                });
-            }
             HideAllSelect();
-            ChangeTool(0,Constant.ToolHand);
+            UISlot.OnItemSelect(ToolbarSlots[0]);
         }
 
-        private void ChangeTool(int index,ITool tool)
+        private void ChangeTool(UISlot slot)
         {
-            ChangeTool(tool, ToolbarSlots[index].Select, ToolbarSlots[index].Icon.sprite);
+            if (slot != null && slot.Data != null)
+            {
+                ChangeTool(slot.Data.Tool, slot.Select, slot.Icon.sprite);
+            }
         }
 
 
@@ -78,53 +70,19 @@ namespace ProjectindieFarm
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                ToolbarSlots[0].Data?.OnSelect?.Invoke();
-            }
+            if (Input.GetKeyDown(KeyCode.Alpha1)) UISlot.OnItemSelect(ToolbarSlots[0]);
+            if (Input.GetKeyDown(KeyCode.Alpha2)) UISlot.OnItemSelect(ToolbarSlots[1]);
+            if (Input.GetKeyDown(KeyCode.Alpha3)) UISlot.OnItemSelect(ToolbarSlots[2]);
+            if (Input.GetKeyDown(KeyCode.Alpha4)) UISlot.OnItemSelect(ToolbarSlots[3]);
+            if (Input.GetKeyDown(KeyCode.Alpha5)) UISlot.OnItemSelect(ToolbarSlots[4]);
+            if (Input.GetKeyDown(KeyCode.Alpha6)) UISlot.OnItemSelect(ToolbarSlots[5]);
+            if (Input.GetKeyDown(KeyCode.Alpha7)) UISlot.OnItemSelect(ToolbarSlots[6]);
+            if (Input.GetKeyDown(KeyCode.Alpha8)) UISlot.OnItemSelect(ToolbarSlots[7]);
+            if (Input.GetKeyDown(KeyCode.Alpha9)) UISlot.OnItemSelect(ToolbarSlots[8]);
+            if (Input.GetKeyDown(KeyCode.Alpha0)) UISlot.OnItemSelect(ToolbarSlots[9]);
+        
 
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                ToolbarSlots[1].Data?.OnSelect?.Invoke();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                ToolbarSlots[2].Data?.OnSelect?.Invoke();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                ToolbarSlots[3].Data?.OnSelect?.Invoke();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                ToolbarSlots[4].Data?.OnSelect?.Invoke();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                ToolbarSlots[5].Data?.OnSelect?.Invoke();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha7))
-            {
-                ToolbarSlots[6].Data?.OnSelect?.Invoke();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha8))
-            {
-                ToolbarSlots[7].Data?.OnSelect?.Invoke();
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha9))
-            {
-                ToolbarSlots[8].Data?.OnSelect?.Invoke();
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                ToolbarSlots[9].Data?.OnSelect?.Invoke();
-            }
+       
         }
     }
 }

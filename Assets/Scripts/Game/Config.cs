@@ -1,21 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace ProjectindieFarm
 {
     public class Config 
     {
-        public static List<Item> Items = new List<Item>()
-        {
-            Hand,
-            Shovel,
-            Seed,
-            WateringCan,
-            SeedRadish,
-            SeedChineseCabbage,
-        };
-
+   
         public static Item Hand = new Item()
         {
             IconName = "ToolHand_0",
@@ -42,7 +31,7 @@ namespace ProjectindieFarm
         public static Item Seed = new Item()
         {
             IconName = "ToolSeed_0",
-            Count = 1,
+            Count = 6,
             Countable = true,
             IsPlant = true,
             Name = "seed",
@@ -54,8 +43,8 @@ namespace ProjectindieFarm
         {
             IconName = "ToolWater_0",
             Count = 1,
-            Countable = true,
-            IsPlant = true,
+            Countable = false,
+            IsPlant = false,
             Name = "watering_can",
             PlantPrefabName = "Plant",
             Tool = Constant.ToolWateringCan
@@ -64,7 +53,7 @@ namespace ProjectindieFarm
         public static Item SeedRadish = new Item()
         {
             IconName = "ToolSeedRadish_0",
-            Count = 1,
+            Count = 6,
             Countable = true,
             IsPlant = true,
             Name = "seed_radish",
@@ -75,12 +64,23 @@ namespace ProjectindieFarm
         public static Item SeedChineseCabbage = new Item()
         {
             IconName = "ToolSeedChineseCabbage_0",
-            Count = 1,
+            Count = 6,
             Countable = true,
             IsPlant = true,
             Name = "seed_chinese_cabbage",
             PlantPrefabName = "",
             Tool = Constant.ToolChineseCabbage
+        };
+
+
+        public static List<Item> Items = new List<Item>()
+        {
+            Hand,
+            Shovel,
+            Seed,
+            WateringCan,
+            SeedRadish,
+            SeedChineseCabbage,
         };
 
     }
