@@ -1,4 +1,4 @@
-// Generate Id:98898031-44ea-4d3e-8ede-397bffec6845
+// Generate Id:641304bc-f1b3-4ba1-89f6-b4dd5ff6e5bb
 using UnityEngine;
 
 namespace ProjectindieFarm
@@ -6,41 +6,25 @@ namespace ProjectindieFarm
 	public partial class UIToolBar
 	{
 
-		public UnityEngine.UI.Button Btn1;
+		public ProjectindieFarm.UISlot ToolbarSlot1;
 
-		public UnityEngine.UI.Image Btn1Icon;
+		public ProjectindieFarm.UISlot ToolbarSlot2;
 
-		public UnityEngine.UI.Image Btn1Select;
+		public ProjectindieFarm.UISlot ToolbarSlot3;
 
-		public UnityEngine.UI.Button Btn2;
+		public ProjectindieFarm.UISlot ToolbarSlot4;
 
-		public UnityEngine.UI.Image Btn2Icon;
+		public ProjectindieFarm.UISlot ToolbarSlot5;
 
-		public UnityEngine.UI.Image Btn2Select;
+		public ProjectindieFarm.UISlot ToolbarSlot6;
 
-		public UnityEngine.UI.Button Btn3;
+		public ProjectindieFarm.UISlot ToolbarSlot7;
 
-		public UnityEngine.UI.Image Btn3Icon;
+		public ProjectindieFarm.UISlot ToolbarSlot8;
 
-		public UnityEngine.UI.Image Btn3Select;
+		public ProjectindieFarm.UISlot ToolbarSlot9;
 
-		public UnityEngine.UI.Button Btn4;
-
-		public UnityEngine.UI.Image Btn4Icon;
-
-		public UnityEngine.UI.Image Btn4Select;
-
-		public UnityEngine.UI.Button Btn5;
-
-		public UnityEngine.UI.Image Btn5Icon;
-
-		public UnityEngine.UI.Image Btn5Select;
-
-		public UnityEngine.UI.Button Btn6;
-
-		public UnityEngine.UI.Image Btn6Icon;
-
-		public UnityEngine.UI.Image Btn6Select;
+		public ProjectindieFarm.UISlot ToolbarSlot10;
 
 	}
 }
