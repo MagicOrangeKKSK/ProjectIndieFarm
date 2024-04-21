@@ -13,37 +13,6 @@ namespace ProjectindieFarm
 
         void Start()
         {
-            ToolbarSlot1.SetData(new SlotData()
-            {
-                Icon = ResController.Instance.LoadSprite("ToolHand_0"),
-                OnSelect = () => { ChangeTool(0, Constant.ToolHand); }
-            }, "1");
-            ToolbarSlot2.SetData(new SlotData()
-            {
-                Icon = ResController.Instance.LoadSprite("ToolShovel_0"),
-                OnSelect = () => { ChangeTool(1, Constant.ToolShovel); }
-            }, "2");
-            ToolbarSlot3.SetData(new SlotData()
-            {
-                Icon = ResController.Instance.LoadSprite("ToolSeed_0"),
-                OnSelect = () => { ChangeTool(2, Constant.ToolSeed); }
-            }, "3");
-            ToolbarSlot4.SetData(new SlotData()
-            {
-                Icon = ResController.Instance.LoadSprite("ToolWater_0"),
-                OnSelect = () => { ChangeTool(3, Constant.ToolWateringCan); }
-            }, "4");
-            ToolbarSlot5.SetData(new SlotData()
-            {
-                Icon = ResController.Instance.LoadSprite("ToolSeedRadish_0"),
-                OnSelect = () => { ChangeTool(4, Constant.ToolSeedRadish); }
-            }, "5");
-            ToolbarSlot6.SetData(new SlotData()
-            {
-                Icon = ResController.Instance.LoadSprite("ToolSeedChineseCabbage_0"),
-                OnSelect = () => { ChangeTool(5, Constant.ToolChineseCabbage); }
-            }, "6");
-
 
             ToolbarSlots.Add(ToolbarSlot1);
             ToolbarSlots.Add(ToolbarSlot2);
@@ -56,7 +25,21 @@ namespace ProjectindieFarm
             ToolbarSlots.Add(ToolbarSlot9);
             ToolbarSlots.Add(ToolbarSlot10);
 
-       
+            for (int i = 0; i < ToolbarSlots.Count; i++)
+            {
+                var slot = ToolbarSlots[i];
+                if(i < Config.Items.Count)
+                {
+                    var item = Config.Items[i];
+                    var index = i;
+                    slot.SetData(new SlotData()
+                    {
+                        Icon = ResController.Instance.LoadSprite(item.IconName),
+                       OnSelect = () => ChangeTool(index, item.Tool)
+                    }, (index + 1).ToString()) ;
+                }
+            }
+
 
             for (int i = ToolbarSlots.Count; i-- > 0;)
             {

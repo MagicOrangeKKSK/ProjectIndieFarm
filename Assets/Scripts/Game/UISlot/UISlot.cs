@@ -32,6 +32,7 @@ namespace ProjectindieFarm
             Icon.sprite = mData.Icon;
             ShortCut.text = shortCut;
         }
+    
     }
 
     public class SlotData : ISlotData
