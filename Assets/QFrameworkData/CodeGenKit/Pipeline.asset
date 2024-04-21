@@ -15,23 +15,15 @@ MonoBehaviour:
   CurrentTask:
     ShowLog: 0
     Status: 1
-    GameObject: {fileID: 0}
+    GameObject: {fileID: 7933248704495709084, guid: c11737ba43731744a893f2731c6d05e7, type: 3}
     From: 0
     NameToFullName: []
-    BindInfos:
-    - TypeName: UnityEngine.Tilemaps.Tilemap
-      PathToRoot: Ground
-      MemberName: Ground
-    - TypeName: UnityEngine.Tilemaps.Tilemap
-      PathToRoot: Soil
-      MemberName: Soil
+    BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: GridController
+    ClassName: PlantChineseCabbage
     Namespace: ProjectindieFarm
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ProjectindieFarm\r\n{\r\n\tpublic
-      partial class GridController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class PlantChineseCabbage : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:a94d6698-6213-4180-a0d9-3240355fd6e7\r\nusing UnityEngine;\r\n\r\nnamespace
-      ProjectindieFarm\r\n{\r\n\tpublic partial class GridController\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.Tilemaps.Tilemap Ground;\r\n\r\n\t\tpublic UnityEngine.Tilemaps.Tilemap
-      Soil;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:ea44e1d8-79a3-41e1-b75e-d086225f0aad\r\nusing UnityEngine;\r\n\r\nnamespace
+      ProjectindieFarm\r\n{\r\n\tpublic partial class PlantChineseCabbage\r\n\t{\r\n\r\n\t}\r\n}\r\n"
