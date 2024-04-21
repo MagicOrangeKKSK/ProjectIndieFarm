@@ -30,6 +30,10 @@ namespace ProjectindieFarm
             {
                 Global.RadishCount.Value++;
             }
+            else if (PlantController.Instance.Plants[toolData.CellPos] as PlantChineseCabbage)
+            {
+                Global.ChineseCabbageCount.Value++;
+            }
 
             Object.Destroy(PlantController.Instance.Plants[toolData.CellPos].GameObject);//.SetState(PlantStates.Old);
             toolData.ShowGrid[toolData.CellPos].HasPlant = false;

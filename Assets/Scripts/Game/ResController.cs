@@ -5,12 +5,14 @@ namespace ProjectindieFarm
 {
 	public partial class ResController : ViewController,ISingleton
 	{
-		public GameObject SeedPrefab;
-		public GameObject WaterPrefab;
+        public GameObject WaterPrefab;
+        public GameObject PlantPrefab;
+        public GameObject PlantRadishPrefab;
+        public GameObject PlantChineseCabbagePrefab;
+
+        public GameObject SeedPrefab;
 		public GameObject SmallPlantPrefab;
 		public GameObject RipePrefab;
-		public GameObject PlantPrefab;
-		public GameObject PlantRadishPrefab;
 
 		public Sprite SeedSprite;
 		public Sprite SmallPlantSprite;
@@ -20,6 +22,10 @@ namespace ProjectindieFarm
 		public Sprite SeedRadishSprite;
 		public Sprite SmallPlantRadishSprite;
 		public Sprite RipeRadishSprite;
+
+        public Sprite SeedChineseCabbageSprite;
+        public Sprite SmallPlantChineseCabbageSprite;
+        public Sprite RipeChineseCabbageSprite;
 
         public static ResController Instance => MonoSingletonProperty<ResController>.Instance;
 

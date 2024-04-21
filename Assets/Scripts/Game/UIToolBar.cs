@@ -29,6 +29,11 @@ namespace ProjectindieFarm
                 ChangeTool(Constant.ToolSeedRadish, Btn5Select, Btn5Icon.sprite);
             });
 
+            Btn6.onClick.AddListener(() =>
+            {
+                ChangeTool(Constant.ToolChineseCabbage, Btn6Select, Btn6Icon.sprite);
+            });
+
             HideAllSelect();
             ChangeTool(Constant.ToolHand, Btn1Select, Btn1Icon.sprite);
         }
@@ -40,6 +45,7 @@ namespace ProjectindieFarm
             Btn3Select.Hide();
             Btn4Select.Hide();
             Btn5Select.Hide();
+            Btn6Select.Hide();
         }
 
         void ChangeTool(ITool tool,Image selectImage,Sprite icon)
@@ -79,6 +85,11 @@ namespace ProjectindieFarm
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
                 ChangeTool(Constant.ToolSeedRadish, Btn5Select, Btn5Icon.sprite);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                ChangeTool(Constant.ToolChineseCabbage, Btn6Select, Btn6Icon.sprite);
             }
         }
     }
