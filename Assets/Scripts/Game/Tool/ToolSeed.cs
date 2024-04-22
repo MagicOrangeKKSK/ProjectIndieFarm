@@ -9,30 +9,32 @@ namespace ProjectindieFarm
     public class ToolSeed : ITool
     {
         public string Name { get; set; } = "seed";
+        public Item Item { get; set; }
+
 
         public bool Selectable(ToolData toolData)
         {
             return toolData.ShowGrid[toolData.CellPos] != null &&
                         toolData.ShowGrid[toolData.CellPos].HasPlant != true &&
-                        Global.FruitSeedCount.Value > 0;
+                        Item.Count.Value > 0 ;
         }
 
 
         public void Use(ToolData toolData)
         {
-            Global.FruitSeedCount.Value--;
+            Item.Count.Value--;
 
-            var plantGameObject = ResController.Instance.PlantPrefab
-              .Instantiate()
-              .Position(toolData.GridCenterPos);
-
-            var plant = plantGameObject.GetComponent<Plant>();
+            var plantGameObject = ResController.Instance.LoadPrefab(Item.PlantPrefabName)
+      .Instantiate()
+      .Position(toolData.GridCenterPos);
+            var plant = plantGameObject.GetComponent<IPlant>();
             plant.XCell = toolData.CellPos.x;
             plant.YCell = toolData.CellPos.y;
             PlantController.Instance.Plants[toolData.CellPos] = plant;
             plant.SetState(PlantStates.Seed);
             toolData.ShowGrid[toolData.CellPos].HasPlant = true;
             AudioController.Instance.SfxSeed.Play();
+ 
         }
     }
 }

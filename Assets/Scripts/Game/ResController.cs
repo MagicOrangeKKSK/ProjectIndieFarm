@@ -8,9 +8,6 @@ namespace ProjectindieFarm
 	public partial class ResController : ViewController,ISingleton
 	{
         public GameObject WaterPrefab;
-        public GameObject PlantPrefab;
-        public GameObject PlantRadishPrefab;
-        public GameObject PlantChineseCabbagePrefab;
 
         public GameObject SeedPrefab;
 		public GameObject SmallPlantPrefab;
@@ -30,6 +27,12 @@ namespace ProjectindieFarm
         public Sprite RipeChineseCabbageSprite;
 
         public List<Sprite> Sprites = new List<Sprite>();
+        public List<GameObject> Prefabs = new List<GameObject>();
+
+        public GameObject LoadPrefab(string prefabName)
+        {
+            return Prefabs.Single(prefab => prefab.name == prefabName);
+        }
 
         public Sprite LoadSprite(string spriteName)
         {

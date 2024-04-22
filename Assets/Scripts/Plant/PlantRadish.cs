@@ -5,8 +5,8 @@ namespace ProjectindieFarm
 {
 	public partial class PlantRadish : ViewController,IPlant
 	{
-		public int XCell;
-		public int YCell;
+		public int XCell { get; set; }
+		public int YCell {  get; set; }
 
 		private PlantStates mState = PlantStates.Seed;
 		public PlantStates State => mState;

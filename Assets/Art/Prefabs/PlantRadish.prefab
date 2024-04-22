@@ -94,15 +94,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7933248704495709084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c5e4ad3ef231e14e956a0bc86cb381d, type: 3}
+  m_Script: {fileID: 11500000, guid: 98d8a1c6f856c554a818eca91cbbce38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Namespace: ProjectindieFarm
   ScriptName: PlantRadish
-  ScriptsFolder: Assets/Scripts/Game
+  ScriptsFolder: Assets\Scripts\Plant
   GeneratePrefab: 0
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
-  XCell: 0
-  YCell: 0
-  RipeDay: -1
+  mSmallStateDay: 0

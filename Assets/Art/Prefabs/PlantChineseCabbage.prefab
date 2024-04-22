@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7933248704495709084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8119952a0f5d95a459892db22d8ff999, type: 3}
+  m_Script: {fileID: 11500000, guid: c8cd889c29ca763408f8001f1c1589a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Namespace: ProjectindieFarm
@@ -103,3 +103,5 @@ MonoBehaviour:
   GeneratePrefab: 0
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
+  mSeedStateDay: 0
+  mSmallStateDay: 0

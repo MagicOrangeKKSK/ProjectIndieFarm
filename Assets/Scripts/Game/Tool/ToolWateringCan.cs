@@ -9,6 +9,8 @@ namespace ProjectindieFarm
     public class ToolWateringCan : ITool
     {
         public string Name { get; set; } = "watering_can";
+        public Item Item { get; set; }
+
         public bool Selectable(ToolData toolData)
         {
             return toolData.ShowGrid[toolData.CellPos] != null &&

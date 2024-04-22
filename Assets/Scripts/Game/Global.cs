@@ -28,7 +28,7 @@ namespace ProjectindieFarm
         /// <summary>
         /// 当前的工具
         /// </summary>
-        public static BindableProperty<ITool> CurrentTool = new BindableProperty<ITool>(Constant.ToolHand);
+        public static BindableProperty<ITool> CurrentTool = new BindableProperty<ITool>(Config.Items[0].Tool);
 
         /// <summary>
         /// 当植物收割

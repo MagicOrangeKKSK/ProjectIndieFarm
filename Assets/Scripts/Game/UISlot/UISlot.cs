@@ -55,7 +55,10 @@ namespace ProjectindieFarm
             ShortCut.text = shortCut;
             if (data.Countable)
             {
-                Count.text = data.Count.ToString();
+                data.Count.Register(count =>
+                {
+                    Count.text = data.Count.Value.ToString();
+                }).UnRegisterWhenGameObjectDestroyed(this);
                 Count.Show();
             }
         }

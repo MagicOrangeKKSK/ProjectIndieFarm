@@ -9,7 +9,7 @@ namespace ProjectindieFarm
     public class ToolShovel : ITool
     {
         public string Name { get; set; } = "shovel";
-
+        public Item Item { get; set; }
         public bool Selectable(ToolData toolData)
         {
             return  toolData.ShowGrid[toolData.CellPos] == null;
