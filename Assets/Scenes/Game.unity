@@ -3528,35 +3528,6 @@ MonoBehaviour:
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
-  m_Vertices:
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: -0.70710677, g: 0.70710677, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.9985302, y: 0.9985302, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: -0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: -0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0.70710665, g: -0.7071069, b: 0, a: 0}
-    uv: {x: 0, y: 0}
-  - position: {x: 0.99853003, y: -0.9985304, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  - position: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0, y: 0}
-  m_Triangles: 030001000800020000000100030002000100050003000800040002000300050004000300070005000800060004000500070006000500010007000800000006000700010000000700
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -4980,9 +4951,6 @@ MonoBehaviour:
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
   WaterPrefab: {fileID: 3453848049489106240, guid: a606a30a4a0be6f4abf8211c9899216d, type: 3}
-  PlantPrefab: {fileID: 7933248704495709084, guid: e4a0689857f853e45bd96e6bb85d42a4, type: 3}
-  PlantRadishPrefab: {fileID: 7933248704495709084, guid: 756e82520906e034abb706bd75054db7, type: 3}
-  PlantChineseCabbagePrefab: {fileID: 7933248704495709084, guid: c11737ba43731744a893f2731c6d05e7, type: 3}
   SeedPrefab: {fileID: 6221509891773524769, guid: f5ff7b4426108c6498c9c82e4772c10e, type: 3}
   SmallPlantPrefab: {fileID: 7933248704495709084, guid: 7b7fdc8903c912748a4ef4ca5ec6978a, type: 3}
   RipePrefab: {fileID: 4709442940488482353, guid: 27086713a65979d4b8f5196cd9d22eac, type: 3}
@@ -7704,7 +7672,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1016836683434146449, guid: 446d9a42b3062114c9d9885a55583113, type: 3}
+  m_Sprite: {fileID: -3283838829243059928, guid: 446d9a42b3062114c9d9885a55583113, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
