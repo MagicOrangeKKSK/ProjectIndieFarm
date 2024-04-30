@@ -1,5 +1,6 @@
 using UnityEngine;
 using QFramework;
+using System.Linq;
 
 namespace ProjectindieFarm
 {
@@ -55,17 +56,21 @@ namespace ProjectindieFarm
 			}).UnRegisterWhenGameObjectDestroyed(gameObject);
 
 
-			BtnBuyFruitSeed.onClick.AddListener(() => 
+			BtnBuyFruitSeed.onClick.AddListener(() =>
 			{
-				Global.FruitSeedCount.Value += 2;
+				var seedItem = Config.Items.Single(i => i.Name == "seed");
+				seedItem.Count.Value += 2;
+
 				Global.FruitCount.Value -= 1;
 				AudioController.Instance.SfxBuy.Play();
 			});
 
 			BtnBuyRadishSeed.onClick.AddListener(() =>
 			{
-				Global.RadishSeedCount.Value += 2;
-				Global.RadishCount.Value -= 1;
+				var seedItem = Config.Items.Single(i => i.Name == "seed_radish");
+                seedItem.Count.Value += 2;
+
+                Global.RadishCount.Value -= 1;
 				AudioController.Instance.SfxBuy.Play();
 			});
 
