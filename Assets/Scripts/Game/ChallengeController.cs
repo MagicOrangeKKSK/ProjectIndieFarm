@@ -31,15 +31,17 @@ namespace ProjectindieFarm
         public static List<Challenge> Challenges = new List<Challenge>()
         {
             new ChallengeHarvestAFruit(),
+            new ChallengeHarvestARadish(),
             new ChallengeRipeAndHarverstTwoFruitsInADay(),
             new ChallengeRipeAndHarverstFiveFruitsInADay(),
-            new ChallengeHarvestARadish(),
             new ChallengeRipeAndHarvestFruitAndRadishInADay(),
             new ChallengeHarvest10thFruit(),
             new ChallengeHarvest10thRadish(),
+            new ChallengeHarvest10thChineseCabbage(),
             new ChallengeRadishCountGreaterOfEqual10(),
             new ChallengeFruitRadishCountGreaterOfEqual10(),
             new ChallengeHarvestChineseCabbage(),
+            new ChallengeCoin100(),
 
         };
         public static List<Challenge> ActiveChallenges = new List<Challenge>()
@@ -60,6 +62,10 @@ namespace ProjectindieFarm
         /// 收获过的萝卜数量
         /// </summary>
         public static int HarvestedRedishCount = 0;
+        /// <summary>
+        /// 收获过的白菜数量
+        /// </summary>
+        public static int HarvestedChineseCabbageCount = 0;
 
         /// <summary>
         /// 当挑战完成
@@ -105,6 +111,7 @@ namespace ProjectindieFarm
                 else if(plant is PlantChineseCabbage)
                 {
                     ChineseCabbageHarvestCountInCurrentDay.Value++;
+                    HarvestedChineseCabbageCount++;
                 }
 
             }).UnRegisterWhenGameObjectDestroyed(this);
