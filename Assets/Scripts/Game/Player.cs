@@ -15,6 +15,7 @@ namespace ProjectindieFarm
 
 		public Font Font;
 		private GUIStyle mLabelStyle;
+		private GUIStyle mCoinStyle;
 
         private void Awake()
         {
@@ -33,7 +34,17 @@ namespace ProjectindieFarm
 				font = this.Font
 			};
 
-			Global.Days.Register((day) =>
+            mCoinStyle = new GUIStyle("Label")
+            {
+                font = this.Font,
+				normal =	new GUIStyleState
+				{
+					 textColor = Color.yellow
+				}
+            };
+
+
+            Global.Days.Register((day) =>
 			{
 			//TODO 写到ChallengeController
 				ChallengeController.RipeAndHarvesCountInCurrentDay.Value = 0;
@@ -74,6 +85,7 @@ namespace ProjectindieFarm
             GUILayout.Space(10);
 			GUILayout.BeginVertical();
 			GUILayout.Label("天数:" + Global.Days.Value, mLabelStyle);
+			GUILayout.Label("$:" + Global.Coin.Value, mCoinStyle);
             //GUILayout.Label("下一天:F", mLabelStyle);
             GUILayout.Label("果子:"+Global.FruitCount.Value, mLabelStyle);
             GUILayout.Label("萝卜:"+Global.RadishCount.Value, mLabelStyle);
