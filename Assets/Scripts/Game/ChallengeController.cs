@@ -13,13 +13,19 @@ namespace ProjectindieFarm
         public static BindableProperty<int> RipeAndHarvesCountInCurrentDay = new BindableProperty<int>(0);
         public static BindableProperty<int> RipeAndHarvesRadishCountInCurrentDay = new BindableProperty<int>(0);
 
-
+        /// <summary>
+        /// 当天收割的数量
+        /// </summary>
         public static BindableProperty<int> HarvestCountInCurrentDay = new BindableProperty<int>(0);
 
         /// <summary>
         /// 当天萝卜收割的数量
         /// </summary>
         public static BindableProperty<int> RadishHarvestCountInCurrentDay = new BindableProperty<int>(0);
+        /// <summary>
+        /// 当天白菜收割的数量
+        /// </summary>
+        public static BindableProperty<int> ChineseCabbageHarvestCountInCurrentDay = new BindableProperty<int>(0);
 
 
         public static List<Challenge> Challenges = new List<Challenge>()
@@ -29,6 +35,12 @@ namespace ProjectindieFarm
             new ChallengeRipeAndHarverstFiveFruitsInADay(),
             new ChallengeHarvestARadish(),
             new ChallengeRipeAndHarvestFruitAndRadishInADay(),
+            new ChallengeHarvest10thFruit(),
+            new ChallengeHarvest10thRadish(),
+            new ChallengeRadishCountGreaterOfEqual10(),
+            new ChallengeFruitRadishCountGreaterOfEqual10(),
+            new ChallengeHarvestChineseCabbage(),
+
         };
         public static List<Challenge> ActiveChallenges = new List<Challenge>()
         {
@@ -89,6 +101,10 @@ namespace ProjectindieFarm
                     {
                         RipeAndHarvesRadishCountInCurrentDay.Value++;
                     }
+                }
+                else if(plant is PlantChineseCabbage)
+                {
+                    ChineseCabbageHarvestCountInCurrentDay.Value++;
                 }
 
             }).UnRegisterWhenGameObjectDestroyed(this);
