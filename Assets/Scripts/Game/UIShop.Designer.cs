@@ -1,4 +1,4 @@
-// Generate Id:4990f32d-d33a-4fa9-b7c6-eea4cd0fbd81
+// Generate Id:3199948b-811c-4263-87b2-db082244e4ca
 using UnityEngine;
 
 namespace ProjectindieFarm
@@ -10,9 +10,13 @@ namespace ProjectindieFarm
 
 		public UnityEngine.UI.Button BtnBuyRadishSeed;
 
-		public UnityEngine.UI.Button BtnBuyFruit;
+		public UnityEngine.UI.Button BtnBuyChineseCabbageSeed;
 
-		public UnityEngine.UI.Button BtnBuyRadish;
+		public UnityEngine.UI.Button BtnSellFruit;
+
+		public UnityEngine.UI.Button BtnSellRadish;
+
+		public UnityEngine.UI.Button BtnSellChineseCabbage;
 
 	}
 }

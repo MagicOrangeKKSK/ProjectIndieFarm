@@ -89,6 +89,11 @@ GetComponent<MyScript>().Show();
             return selfComponent;
         }
 
+        public static T SetActive<T>(this T selfComponent,bool active) where T : Component
+        {
+            selfComponent.gameObject.SetActive(active);
+            return selfComponent;
+        }
 
 #if UNITY_EDITOR
         // v1 No.50

@@ -12,6 +12,8 @@ namespace ProjectindieFarm
         /// </summary>
         public static BindableProperty<int> Days = new BindableProperty<int>();
 
+        public static BindableProperty<int> Coin = new BindableProperty<int>(0);
+
         /// <summary>
         /// 结果数量
         /// </summary>
