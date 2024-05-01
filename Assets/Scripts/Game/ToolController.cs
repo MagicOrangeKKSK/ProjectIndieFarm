@@ -39,30 +39,52 @@ namespace ProjectindieFarm
      
         private ToolData mToolData = new ToolData();
 
+        bool ToolInRange(Vector3Int mouseCellPos, Vector3Int playerCellPos,int range = 1)
+        {
+            var offsetCellX = -range;
+            var offsetCellY = -range;
+            var width = 1 + 2 * range;
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    var cellX = offsetCellX + i;
+                    var cellY = offsetCellY + j;
+
+                    if (mouseCellPos.x - playerCellPos.x == cellX && mouseCellPos.y - playerCellPos.y == cellY)
+                        return true;
+                }
+            }
+            return false;
+        }
+
         private void Update()
         {
             var playerCellPos = mGrid.WorldToCell(Global.Player.Position());
             var worldMousePos = mMainCamera.ScreenToWorldPoint(Input.mousePosition);
             worldMousePos.z = 0;
 
-            var cellPos = mGrid.WorldToCell(worldMousePos + new Vector3(0.25f,-0.25f));
+            var mouseCellPos = mGrid.WorldToCell(worldMousePos + new Vector3(0.25f,-0.25f));
 
             mSprite.enabled = false;
 
-            if (Mathf.Max(Mathf.Abs(cellPos.x - playerCellPos.x) , Mathf.Abs(cellPos.y - playerCellPos.y)) == 1 || 
-               (cellPos.x - playerCellPos.x == 0 && cellPos.y - playerCellPos.y == 0 ) //目前嗐没有带碰撞的植物 
-               )
+          
+            if(ToolInRange(mouseCellPos, playerCellPos))
+
+            //if (Mathf.Max(Mathf.Abs(cellPos.x - playerCellPos.x) , Mathf.Abs(cellPos.y - playerCellPos.y)) == 1 || 
+            //   (cellPos.x - playerCellPos.x == 0 && cellPos.y - playerCellPos.y == 0 ) //目前嗐没有带碰撞的植物 
+            //   )
             {
-                if (cellPos.x < 10 && cellPos.x >= 0 && cellPos.y < 10 && cellPos.y >= 0)
+                if (mouseCellPos.x < 10 && mouseCellPos.x >= 0 && mouseCellPos.y < 10 && mouseCellPos.y >= 0)
                 {
                     mToolData.ShowGrid = mShowGrid;
-                    mToolData.CellPos = cellPos;
+                    mToolData.CellPos = mouseCellPos;
                     mToolData.Pen = mGridController.Pen;
                     mToolData.SoilTilemap = mTilemap;
 
                     if (Global.CurrentTool.Value.Selectable(mToolData))
                     {
-                        mToolData.GridCenterPos = ShowSelect(cellPos);
+                        mToolData.GridCenterPos = ShowSelect(mouseCellPos);
                         if (Input.GetMouseButton(0))
                         {
                             Global.CurrentTool.Value.Use(mToolData);

@@ -11,6 +11,8 @@ namespace ProjectindieFarm
         public string Name { get; set; } = "watering_can";
         public Item Item { get; set; }
 
+        public int Range => Global.WateringCan1Unlock ? 2 : 1;
+
         public bool Selectable(ToolData toolData)
         {
             return toolData.ShowGrid[toolData.CellPos] != null &&

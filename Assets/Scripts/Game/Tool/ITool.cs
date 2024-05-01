@@ -18,7 +18,7 @@ namespace ProjectindieFarm
     public interface ITool 
     {
         public Item Item { get; set; }
-
+        int Range { get;  }
 
          public string Name { get; set; }
         //bool Selectable();

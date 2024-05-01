@@ -11,6 +11,7 @@ namespace ProjectindieFarm
         public string Name { get;  set; } = "hand";
         public Item Item { get; set; }
 
+        public int Range => Global.HandRange1Unlock ? 2 : 1;
 
         public bool Selectable(ToolData toolData)
         {

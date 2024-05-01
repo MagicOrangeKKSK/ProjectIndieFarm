@@ -11,6 +11,7 @@ namespace ProjectindieFarm
         public string Name { get; set; } = "seed";
         public Item Item { get; set; }
 
+        public int Range => 1;
 
         public bool Selectable(ToolData toolData)
         {
