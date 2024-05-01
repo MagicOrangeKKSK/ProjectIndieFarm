@@ -40,6 +40,7 @@ namespace ProjectindieFarm
             new ChallengeHarvest10thChineseCabbage(),
             new ChallengeRadishCountGreaterOfEqual10(),
             new ChallengeFruitRadishCountGreaterOfEqual10(),
+            new ChallengeFruitChineseCabbageCountGreaterOfEqual10(),
             new ChallengeHarvestChineseCabbage(),
             new ChallengeCoin100(),
 

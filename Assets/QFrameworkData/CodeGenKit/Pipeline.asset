@@ -20,32 +20,29 @@ MonoBehaviour:
     NameToFullName: []
     BindInfos:
     - TypeName: UnityEngine.UI.Button
-      PathToRoot: BtnBuyFruitSeed
-      MemberName: BtnBuyFruitSeed
+      PathToRoot: BtnHandRange1
+      MemberName: BtnHandRange1
     - TypeName: UnityEngine.UI.Button
-      PathToRoot: BtnBuyRadishSeed
-      MemberName: BtnBuyRadishSeed
+      PathToRoot: BtnShovelRange1
+      MemberName: BtnShovelRange1
     - TypeName: UnityEngine.UI.Button
-      PathToRoot: BtnBuyChineseCabbageSeed
-      MemberName: BtnBuyChineseCabbageSeed
+      PathToRoot: BtnWateringCan1
+      MemberName: BtnWateringCan1
     - TypeName: UnityEngine.UI.Button
       PathToRoot: BtnSellFruit
       MemberName: BtnSellFruit
     - TypeName: UnityEngine.UI.Button
       PathToRoot: BtnSellRadish
       MemberName: BtnSellRadish
-    - TypeName: UnityEngine.UI.Button
-      PathToRoot: BtnSellChineseCabbage
-      MemberName: BtnSellChineseCabbage
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: UIShop
+    ClassName: UIPowerUp
     Namespace: ProjectindieFarm
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ProjectindieFarm\r\n{\r\n\tpublic
-      partial class UIShop : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class UIPowerUp : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:3199948b-811c-4263-87b2-db082244e4ca\r\nusing UnityEngine;\r\n\r\nnamespace
-      ProjectindieFarm\r\n{\r\n\tpublic partial class UIShop\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.UI.Button BtnBuyFruitSeed;\r\n\r\n\t\tpublic UnityEngine.UI.Button
-      BtnBuyRadishSeed;\r\n\r\n\t\tpublic UnityEngine.UI.Button BtnBuyChineseCabbageSeed;\r\n\r\n\t\tpublic
+    DesignerCode: "// Generate Id:1209777b-188e-4bcc-ae89-10467fca2dbf\r\nusing UnityEngine;\r\n\r\nnamespace
+      ProjectindieFarm\r\n{\r\n\tpublic partial class UIPowerUp\r\n\t{\r\n\r\n\t\tpublic
+      UnityEngine.UI.Button BtnHandRange1;\r\n\r\n\t\tpublic UnityEngine.UI.Button
+      BtnShovelRange1;\r\n\r\n\t\tpublic UnityEngine.UI.Button BtnWateringCan1;\r\n\r\n\t\tpublic
       UnityEngine.UI.Button BtnSellFruit;\r\n\r\n\t\tpublic UnityEngine.UI.Button
-      BtnSellRadish;\r\n\r\n\t\tpublic UnityEngine.UI.Button BtnSellChineseCabbage;\r\n\r\n\t}\r\n}\r\n"
+      BtnSellRadish;\r\n\r\n\t}\r\n}\r\n"

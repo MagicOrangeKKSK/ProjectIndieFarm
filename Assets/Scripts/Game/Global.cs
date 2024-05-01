@@ -37,10 +37,16 @@ namespace ProjectindieFarm
 
         public static Player Player;
         public static ToolController Mouse;
+
+        public static bool HandRange1Unlock = false;
+        public static bool ShovelRange1Unlock = false;
+        public static bool WateringCan1Unlock = false;
     }
 
     /// <summary>
     /// ³£Á¿
     /// </summary>
-    
+
+  
+
 }
