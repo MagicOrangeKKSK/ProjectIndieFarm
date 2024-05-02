@@ -40,7 +40,8 @@ namespace ProjectindieFarm
 
         public static bool HandRange1Unlock = false;
         public static bool ShovelRange1Unlock = false;
-        public static bool WateringCan1Unlock = false;
+        public static bool WateringCanRange1Unlock = false;
+        public static bool SeedRange1Unlock = false;
     }
 
     /// <summary>

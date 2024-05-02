@@ -69,11 +69,7 @@ namespace ProjectindieFarm
             mSprite.enabled = false;
 
           
-            if(ToolInRange(mouseCellPos, playerCellPos))
-
-            //if (Mathf.Max(Mathf.Abs(cellPos.x - playerCellPos.x) , Mathf.Abs(cellPos.y - playerCellPos.y)) == 1 || 
-            //   (cellPos.x - playerCellPos.x == 0 && cellPos.y - playerCellPos.y == 0 ) //目前嗐没有带碰撞的植物 
-            //   )
+            if(ToolInRange(mouseCellPos, playerCellPos,Global.CurrentTool.Value.Range))
             {
                 if (mouseCellPos.x < 10 && mouseCellPos.x >= 0 && mouseCellPos.y < 10 && mouseCellPos.y >= 0)
                 {
